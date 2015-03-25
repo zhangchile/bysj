@@ -1,4 +1,4 @@
-<?php include("/../template/header.php");?>
+<?php $this->load->view("template/header.php");?>
 <?php //var_dump($this->action)?>
 <!-- 添加组内管理员层Modal -->
   <form action="<?php echo site_url('admin/add');?>" method="post" class="form-horizontal" role="form">
@@ -207,4 +207,4 @@ $(document).ready(function(){
   });
 });
 </script>
-<?php include("/../template/footer.php");?>
+<?php $this->load->view("template/footer.php");?>

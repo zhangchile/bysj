@@ -1,4 +1,4 @@
-<?php include("/../template/header.php");?>
+<?php $this->load->view("template/header.php");?>
 
       <div class="row row-offcanvas row-offcanvas-right">
         <!-- 左侧栏-->
@@ -25,4 +25,4 @@
       </div>
       </div><!--/row-->
 
-<?php include("/../template/footer.php");?>
+<?php $this->load->view("template/footer.php");?>

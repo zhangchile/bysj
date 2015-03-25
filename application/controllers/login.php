@@ -75,7 +75,7 @@ class Login extends CI_Controller {
                         'sid'        => $flag[0]['sid'],
                         'type'       => $flag[0]['type'],
                         'department' => $flag[0]['department'],
-                    )
+                    );
                 $this->session->set_userdata($arr);//设置session
                 redirect('student/index');
             } else {

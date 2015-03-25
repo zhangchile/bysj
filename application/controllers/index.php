@@ -10,8 +10,8 @@ class Index extends CI_Controller {
     public function index()
     {
         // var_dump($this->session->all_userdata());
-        if($this->session->userdata('identity') == "admin") 
-            redirect("homepage");
+        if($this->session->userdata('identity') == "superadmin") 
+            redirect("superadmin/homepage");
         else if($this->session->userdata('identity') == "student") {
             redirect("building");
         } else {

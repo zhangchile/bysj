@@ -54,7 +54,7 @@ class Login extends CI_Controller {
                     'masterid' => $flag[0]['id'],
                     'truename' => $flag[0]['truename'],
                     'is_login' => true,
-                    'identity' => "admin",
+                    'identity' => "superadmin",
                     'groupid'  => empty($group[0]['groupid']) ? null : $group[0]['groupid'],
                     'groupname' => empty($group[0]['groupname']) ? null : $group[0]['groupname'],
                     'action'    => implode(",", $action_arr)

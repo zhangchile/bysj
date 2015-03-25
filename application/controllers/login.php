@@ -54,7 +54,7 @@ class Login extends CI_Controller {
                     'masterid' => $flag[0]['id'],
                     'truename' => $flag[0]['truename'],
                     'is_login' => true,
-                    'identity' => "admin",
+                    'identity' => "superadmin",
                     'groupid'  => empty($group[0]['groupid']) ? null : $group[0]['groupid'],
                     'groupname' => empty($group[0]['groupname']) ? null : $group[0]['groupname'],
                     'action'    => implode(",", $action_arr)
@@ -66,8 +66,22 @@ class Login extends CI_Controller {
             }
         } else {
             //学生登录
-            // var_dump("学生登录");
-            $this->load->view("building");
+            // $this->load->view("building");
+            $flag = $this->login_model->student_check($uid, $pwd);
+            if(is_array($flag) && !empty($flag))
+            {
+                $arr = array(
+                        'id'         => $flag[0]['id'],
+                        'sid'        => $flag[0]['sid'],
+                        'type'       => $flag[0]['type'],
+                        'department' => $flag[0]['department'],
+                    )
+                $this->session->set_userdata($arr);//设置session
+                redirect('student/index');
+            } else {
+                redirect("login/index/1?error=true");
+            }
+
         }
 
     }

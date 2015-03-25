@@ -1,6 +1,6 @@
-<?php include("template/header.php");?>
-<?php //var_dump($this->action)?>
-<!-- 添加组内管理员层Modal -->
+<?php include("/../template/header.php");?>
+
+<!-- 添加管理员层Modal -->
   <form action="<?php echo site_url('admin/add');?>" method="post" class="form-horizontal" role="form">
   <input id="add_groupid" type="hidden" name="groupid" value="">    
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -36,71 +36,6 @@
 </div><!-- /.modal -->
 </form>
 
-<!-- 添加一个新管理员层Modal -->
-  <form action="<?php echo site_url('admin/addmaster');?>" method="post" class="form-horizontal" role="form"> 
-<div class="modal fade" id="addmasterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">注册</h4>
-      </div>
-      <div class="modal-body">
-
-         <div class="form-group">
-       <label for="username" class="col-sm-3 control-label">用户名</label>
-       <div class="col-sm-8">
-         <input type="text" name="username" value=""  class="form-control input">
-          </div>
-       </div>
-
-         <div class="form-group">
-       <label for="password" class="col-sm-3 control-label">密码</label>
-       <div class="col-sm-8">
-            <input type="password" name="password" value=""  class="form-control input">
-          </div>
-       </div>
-
-         <div class="form-group">
-       <label for="truename" class="col-sm-3 control-label">真实姓名</label>
-       <div class="col-sm-8">
-            <input type="text" name="truename" value=""  class="form-control input">
-          </div>
-       </div>
-         <div class="form-group">
-       <label for="sname" class="col-sm-3 control-label">性别</label>
-       <div class="col-sm-8">
-         <select name="sex" class="form-control">
-            <option  value="男" selected>男</option>
-            <option value="女">女</option>
-          </select>
-          </div>
-       </div>
-
-         <div class="form-group">
-       <label for="email" class="col-sm-3 control-label">电子邮件</label>
-       <div class="col-sm-8">
-            <input type="text" name="email" value=""  class="form-control input">
-          </div>
-       </div>
-
-         <div class="form-group">
-       <label for="mobile" class="col-sm-3 control-label">电话</label>
-       <div class="col-sm-8">
-            <input type="text" name="mobile" value=""  class="form-control input">
-          </div>
-       </div>
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="submit" class="btn btn-primary">保存</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-</form>
 
 <!-- 添加分组层Modal -->
 <form action="<?php echo site_url('admin/addgroup');?>" method="post" class="form-horizontal" role="form">
@@ -162,40 +97,47 @@
         <?php echo $sidebar;?>
         <!--end 左侧栏-->
         <div class="col-xs-12 col-sm-9">
-        <div>
-            <p>
-              <?php if(in_array("addgroupmanager", $this->action)):?>
-              <a data-toggle="modal" data-target="#addgroupModal"  class="btn btn-primary">添加一个组</a>
-              <?php endif;?>
 
-              <?php if(in_array("addmaster", $this->action)):?>
-              <a data-toggle="modal" data-target="#addmasterModal"  class="btn btn-primary">注册新管理员</a>
-              <?php endif;?>
-            </p>
-        </div>
         <?php foreach($group as $g) :?>
-<?php //var_dump($g['master'])?>
+<?php //var_dump($g)?>
+
         <div class="panel panel-default">
           <div class="panel-heading" style="cursor:pointer;">
             <?php echo $g['groupname']?>
-            <?php if(in_array("delgroupmanager", $this->action) && $this->session->userdata("groupid") != $g['groupid']):?>
-            <a type='button' style="float:right;cursor:pointer" data-toggle="modal" data="<?php echo site_url("admin/delgroup").'/'.$g['groupid'];?>" data-target="#deleteModal">删除该组</a>
-          <?php endif;?>
           </div>
           <div class="panel-body">
             <ul class="list-group">
-              <?php foreach ($g['master'] as $key => $value) {?>
-                <li class="list-group-item"><?php echo $value['name']?>
-                  <?php if(in_array("delgroupmaster", $this->action) && $value['masterid']!=$this->session->userdata("masterid")):?>
-                  <a id="delete" data="<?php echo site_url("admin/del").'/'.$value['id'];?>" style="float:right;cursor:pointer" data-toggle="modal" data-target="#deleteModal">删除</a></li>
+              <?php foreach ($g['permission'] as $key => $value) {?>
+                <li class="list-group-item"><?php echo $value['actionname']?>
+                  <?php if(in_array("delpermission", $this->action)):?>
+                  <a id="delete" data="<?php echo site_url("permission/del").'/'.$value['id'];?>" style="float:right;cursor:pointer" data-toggle="modal" data-target="#deleteModal">删除</a>
                 <?php endif;?>
+                </li>
               <?php }?>
             </ul>
-            <?php if(in_array("addgroupmaster", $this->action)) :?>
-            <a type='button' id="add" data-groupid="<?php echo $g["groupid"]?>" style="float:left;" class="btn btn-primary" data-toggle="modal" data-target="#addModal">添加</a>
+            <?php if(in_array("addpermission", $this->action) && !empty($g["unget_permission"])):?>
+            <form method="post" action="<?php echo site_url("permission/add");?>">
+              <input type="hidden" name="groupid" value="<?php echo $g['groupid']?>">
+            <div class="col-sm-6">
+             <select name="action" class="form-control">
+               <?php foreach($g["unget_permission"] as $key => $value):?>
+                 <?php if($key == 0):?>
+                  <option  value="<?php echo $value['action'];?>" selected><?php echo $value['actionname'];?></option>
+                  <?php else:?>
+                  <option value="<?php echo $value['action'];?>"><?php echo $value['actionname'];?></option>
+                  <?php endif;?>
+                <?php endforeach;?>
+              </select>
+            </div>
+          <div class="col-sm-4">
+           <input type='submit' style="float:left;" class="btn btn-primary"  value="添加">
+         
+       </div>
+        </form>
           <?php endif;?>
           </div>
         </div>
+
       <?php endforeach;?>
         </div><!--/span-->
       </div><!--/row-->
@@ -207,4 +149,4 @@ $(document).ready(function(){
   });
 });
 </script>
-<?php include("template/footer.php");?>
+<?php include("/../template/footer.php");?>

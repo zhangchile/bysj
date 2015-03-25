@@ -20,8 +20,8 @@ class Admin extends CI_Controller {
             $mastergroup = $this->acl_model->GetMasterGroup($value['groupid']);
             $GroupManager[$key]["master"] = $mastergroup;
         }
-        
-        $this->load->view('admin_index', array("group"=>$GroupManager,"AllMaster"=>$AllMaster,"sidebar"=>$sidebar_str));
+
+        $this->load->view('superadmin/admin_index', array("group"=>$GroupManager,"AllMaster"=>$AllMaster,"sidebar"=>$sidebar_str));
     }
 
 
@@ -41,9 +41,9 @@ class Admin extends CI_Controller {
         // var_dump($data);
         $flag = $this->acl_model->AddMasterGroup($data);
         if($flag) {
-            redirect('admin');
+            redirect('superadmin/admin');
         } else {
-            redirect('admin/msg_fail');
+            redirect('superadmin/admin/msg_fail');
         }
     }
 
@@ -61,9 +61,9 @@ class Admin extends CI_Controller {
             );
         $flag = $this->acl_model->AddMaster($data);
         if($flag) {
-            redirect('admin');
+            redirect('superadmin/admin');
         } else {
-            redirect('admin/msg_fail');
+            redirect('superadmin/admin/msg_fail');
         }
     }
 
@@ -81,18 +81,18 @@ class Admin extends CI_Controller {
             );
         $flag = $this->acl_model->AddGroupManager($data);
         if($flag) {
-            redirect('admin');
+            redirect('superadmin/admin');
         } else {
-            redirect('admin/msg_fail');
+            redirect('superadmin/admin/msg_fail');
         }
     }
 
     public function del($id) {
         $flag = $this->acl_model->DelMasterGroup($id);
         if($flag) {
-            redirect('admin');
+            redirect('superadmin/admin');
         } else {
-            redirect('admin/msg_fail');
+            redirect('superadmin/admin/msg_fail');
         }
     }
 
@@ -106,9 +106,9 @@ class Admin extends CI_Controller {
         $this->acl_model->DelActionGroup2($id);
 
         if($flag) {
-            redirect('admin');
+            redirect('superadmin/admin');
         } else {
-            redirect('admin/msg_fail');
+            redirect('superadmin/admin/msg_fail');
         }
     }
 

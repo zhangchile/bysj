@@ -22,7 +22,7 @@ class Permission extends CI_Controller {
             $GroupManager[$key]["unget_permission"] = $unget_permission;
         }
 
-        $this->load->view('permission',array("group"=>$GroupManager,"sidebar"=>$sidebar_str));
+        $this->load->view('superadmin/permission',array("group"=>$GroupManager,"sidebar"=>$sidebar_str));
     }
 
     public function add() {
@@ -37,12 +37,12 @@ class Permission extends CI_Controller {
             "createdate" => time()
             );
         $this->acl_model->AddActionGroup($data);
-        redirect('permission');
+        redirect('superadmin/permission');
     }
 
     public function del($id) {
         $flag = $this->acl_model->DelActionGroup($id);
-        redirect('permission');
+        redirect('superadmin/permission');
     }
 
 

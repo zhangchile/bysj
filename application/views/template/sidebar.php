@@ -1,6 +1,6 @@
         <div class="col-xs-6 col-sm-3 sidebar-default" id="sidebar" role="navigation">
           <div class="list-group">
-            <a href="<?php echo site_url("homepage");?>" class="list-group-item <?php if(strstr($this->uri->uri_string(),"homepage")) echo " active ";?>">
+            <a href="<?php echo site_url("superadmin/homepage");?>" class="list-group-item <?php if(strstr($this->uri->uri_string(),"homepage")) echo " active ";?>">
               主页
             </a>
             <?php foreach ($sidebar as $key => $value) :?>

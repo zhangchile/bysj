@@ -1,7 +1,7 @@
 <?php $this->load->view("template/header.php");?>
 
 <!-- 添加管理员层Modal -->
-  <form action="<?php echo site_url('admin/add');?>" method="post" class="form-horizontal" role="form">
+  <form action="<?php echo site_url('superadmin/admin/add');?>" method="post" class="form-horizontal" role="form">
   <input id="add_groupid" type="hidden" name="groupid" value="">    
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -38,7 +38,7 @@
 
 
 <!-- 添加分组层Modal -->
-<form action="<?php echo site_url('admin/addgroup');?>" method="post" class="form-horizontal" role="form">
+<form action="<?php echo site_url('superadmin/admin/addgroup');?>" method="post" class="form-horizontal" role="form">
 <div class="modal fade" id="addgroupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -116,7 +116,7 @@
               <?php }?>
             </ul>
             <?php if(in_array("addpermission", $this->action) && !empty($g["unget_permission"])):?>
-            <form method="post" action="<?php echo site_url("permission/add");?>">
+            <form method="post" action="<?php echo site_url("superadmin/permission/add");?>">
               <input type="hidden" name="groupid" value="<?php echo $g['groupid']?>">
             <div class="col-sm-6">
              <select name="action" class="form-control">

@@ -2,7 +2,7 @@
 
       <div class="row row-offcanvas row-offcanvas-right">
         <!-- 左侧栏-->
-        <?php echo $sidebar;?>
+        <?php $this->load->view('template/student_sidebar');?>
         <!--end 左侧栏-->
       <div class="col-md-8">
         <div class="panel panel-default">

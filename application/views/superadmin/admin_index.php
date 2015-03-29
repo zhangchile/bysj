@@ -1,7 +1,7 @@
 <?php $this->load->view("template/header.php");?>
 <?php //var_dump($this->action)?>
 <!-- 添加组内管理员层Modal -->
-  <form action="<?php echo site_url('admin/add');?>" method="post" class="form-horizontal" role="form">
+  <form action="<?php echo site_url('superadmin/admin/add');?>" method="post" class="form-horizontal" role="form">
   <input id="add_groupid" type="hidden" name="groupid" value="">    
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -37,7 +37,7 @@
 </form>
 
 <!-- 添加一个新管理员层Modal -->
-  <form action="<?php echo site_url('admin/addmaster');?>" method="post" class="form-horizontal" role="form"> 
+  <form action="<?php echo site_url('superadmin/admin/addmaster');?>" method="post" class="form-horizontal" role="form"> 
 <div class="modal fade" id="addmasterModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -103,7 +103,7 @@
 </form>
 
 <!-- 添加分组层Modal -->
-<form action="<?php echo site_url('admin/addgroup');?>" method="post" class="form-horizontal" role="form">
+<form action="<?php echo site_url('superadmin/admin/addgroup');?>" method="post" class="form-horizontal" role="form">
 <div class="modal fade" id="addgroupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">

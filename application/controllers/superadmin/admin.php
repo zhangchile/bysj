@@ -72,7 +72,7 @@ class Admin extends CI_Controller {
         if(!$this->input->post()) show_404();
         $post = $this->input->post();
         $data = array(
-                "groupid" => "null",
+                "groupid" => null,
                 "groupname" => $post['groupname'],
                 "groupinfo" => $post['groupinfo'],
                 "masterid"  => $this->session->userdata('masterid'),

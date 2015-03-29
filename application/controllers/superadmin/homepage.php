@@ -19,7 +19,7 @@ class Homepage extends CI_Controller {
         $offset = ($page - 1) * $perpage;
         $notice = $this->notice_model->GetNotice($offset,$perpage);
         //分页
-        $total = $this->notice_model->GetNoticeCount();
+        $total = 50;//$this->notice_model->GetNoticeCount();
         $totalpage = ceil($total / $perpage);
 
         $this->load->library('pagination');

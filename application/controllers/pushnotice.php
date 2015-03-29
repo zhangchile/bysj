@@ -23,7 +23,7 @@ class PushNotice extends CI_Controller {
         $post = $this->input->post();
 // var_dump($post);exit;
         $data = array(
-                "id" => "null",
+                "id" => null,
                 "title" => $post['title'],
                 "content" => $post['content'],
                 "authorid" => $this->session->userdata("masterid"),
@@ -31,7 +31,7 @@ class PushNotice extends CI_Controller {
                 "time" => time()
             );
         $this->notice_model->AddNotice($data);
-        redirect("homepage");
+        redirect("superadmin/homepage");
     }
 
 }

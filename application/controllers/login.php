@@ -51,11 +51,11 @@ class Login extends CI_Controller {
                     array_push($action_arr, $value['action']);
                 }
                 $arr = array(
-                    'masterid' => $flag[0]['id'],
-                    'truename' => $flag[0]['truename'],
-                    'is_login' => true,
-                    'identity' => "superadmin",
-                    'groupid'  => empty($group[0]['groupid']) ? null : $group[0]['groupid'],
+                    'masterid'  => $flag[0]['id'],
+                    'truename'  => $flag[0]['truename'],
+                    'is_login'  => true,
+                    'identity'  => "superadmin",
+                    'groupid'   => empty($group[0]['groupid']) ? null : $group[0]['groupid'],
                     'groupname' => empty($group[0]['groupname']) ? null : $group[0]['groupname'],
                     'action'    => implode(",", $action_arr)
                     );
@@ -75,6 +75,7 @@ class Login extends CI_Controller {
                         'sid'        => $flag[0]['sid'],
                         'type'       => $flag[0]['type'],
                         'department' => $flag[0]['department'],
+                        'is_login'   => true,
                     );
                 $this->session->set_userdata($arr);//设置session
                 redirect('student/index');
@@ -85,11 +86,29 @@ class Login extends CI_Controller {
         }
 
     }
+    
     public function logout()
     {
         if($this->session->userdata('masterid'))
         {
-            $array_items = array('masterid' => '', 'truename' => '', 'is_login' => '','identity'=>'','groupid'=>'','groupname'=>'');
+            $array_items = array(
+                        'masterid'  => '', 
+                        'truename'  => '', 
+                        'is_login'  => '',
+                        'identity'  => '',
+                        'groupid'   => '',
+                        'groupname' => ''
+                    );
+            $this->session->unset_userdata($array_items);
+            redirect('login');
+        } else {
+            $arr = array(
+                    'id'         => '',
+                    'sid'        => '',
+                    'type'       => '',
+                    'department' => '',
+                    'is_login'   => '',
+                );
             $this->session->unset_userdata($array_items);
             redirect('login');
         }

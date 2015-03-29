@@ -13,7 +13,7 @@ class Notice extends CI_Controller {
     }
 
     public function index($page = 1) {
-        $perpage = 10;
+        $perpage = 1;
         $offset = ($page - 1) * $perpage;
 
         $sidebar_data = $this->acl_model->GetSiderBar($this->session->userdata("masterid"));

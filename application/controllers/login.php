@@ -8,6 +8,7 @@ class Login extends CI_Controller {
         $this->load->model('notice_model');
         $this->config->load('pager_config',TRUE);
         $this->load->model("login_model");
+        $this->load->library('dormitory');
     }
 
     public function index($page = 1)
@@ -66,13 +67,13 @@ class Login extends CI_Controller {
             }
         } else {
             //学生登录
-            // $this->load->view("building");
             $flag = $this->login_model->student_check($uid, $pwd);
             if(is_array($flag) && !empty($flag))
             {
                 $arr = array(
                         'id'         => $flag[0]['id'],
                         'sid'        => $flag[0]['sid'],
+                        'truename'   => $this->dormitory->TransformID($flag[0]['sid']),
                         'type'       => $flag[0]['type'],
                         'department' => $flag[0]['department'],
                         'is_login'   => true,
@@ -105,6 +106,7 @@ class Login extends CI_Controller {
             $arr = array(
                     'id'         => '',
                     'sid'        => '',
+                    'truename'   => '',
                     'type'       => '',
                     'department' => '',
                     'is_login'   => '',

@@ -12,6 +12,7 @@ class Login_Model extends CI_Model {
 	*
     */
     public function student_check($sid, $pwd) {
+        $sid = strtoupper($sid);
         $query = $this->db->get_where('dormitory', array('sid' => $sid, 'password' => md5($pwd)));
         return $query->result_array();
     }

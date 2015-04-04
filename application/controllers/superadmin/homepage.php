@@ -19,7 +19,7 @@ class Homepage extends CI_Controller {
         $offset = ($page - 1) * $perpage;
         $notice = $this->notice_model->GetNotice($offset,$perpage);
         //分页
-        $total = 50;//$this->notice_model->GetNoticeCount();
+        $total = $this->notice_model->GetNoticeCount();
         $totalpage = ceil($total / $perpage);
 
         $this->load->library('pagination');
@@ -27,6 +27,7 @@ class Homepage extends CI_Controller {
         $pager_config['base_url'] = site_url("superadmin/homepage/index");
         $pager_config['total_rows'] = $total;//获取总数
         $pager_config['per_page'] = $perpage; //设置每页显示的条数
+        $pager_config['uri_segment'] = 4;
         $this->pagination->initialize($pager_config);
         //END
 

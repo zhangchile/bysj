@@ -16,7 +16,7 @@ class Index extends CI_Controller {
         $offset = ($page - 1) * $perpage;
         $notice = $this->notice_model->GetNotice($offset,$perpage);
         //分页
-        $total = 15;//$this->notice_model->GetNoticeCount();
+        $total = $this->notice_model->GetNoticeCount();
         $totalpage = ceil($total / $perpage);
 
         $this->load->library('pagination');
@@ -24,6 +24,7 @@ class Index extends CI_Controller {
         $pager_config['base_url'] = site_url("student/index/index");
         $pager_config['total_rows'] = $total;//获取总数
         $pager_config['per_page'] = $perpage; //设置每页显示的条数
+        $pager_config['uri_segment'] = 4;
         $this->pagination->initialize($pager_config);
         //END
         $this->load->view('student/index', array("notice"=>$notice));

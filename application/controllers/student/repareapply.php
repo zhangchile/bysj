@@ -8,13 +8,13 @@ class RepareApply extends CI_Controller {
     {
         parent::__construct();
         $this->_sid = $this->session->userdata('sid');
-        $this->config->load('pager_config',TRUE);
         $this->load->model('repareorder_model');
+        $this->config->load('pager_config',TRUE);
     }
 
     public function index($page = 1)
     {
-        $perpage = 1;
+        $perpage = 5;
         $offset = ($page - 1) * $perpage;
         $data = $this->repareorder_model->getallorder($this->_sid, $offset, $perpage);
 
@@ -29,6 +29,7 @@ class RepareApply extends CI_Controller {
         $pager_config['base_url'] = site_url("student/repareapply/index");
         $pager_config['total_rows'] = $total;//获取总数
         $pager_config['per_page'] = $perpage; //设置每页显示的条数
+        $pager_config['uri_segment'] = 4;
         $this->pagination->initialize($pager_config);
         //END        
         $this->load->view("student/repareapply", array('data' => $data));

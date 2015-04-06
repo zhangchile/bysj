@@ -20,7 +20,7 @@ class RepareApply extends CI_Controller {
 
 // var_dump($data);
         //分页
-        $total = $this->repareorder_model->geCount($this->_sid);
+        $total = $this->repareorder_model->getCount($this->_sid);
 
         $totalpage = ceil($total / $perpage);
 

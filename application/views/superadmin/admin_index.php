@@ -179,7 +179,7 @@
           <div class="panel-heading" style="cursor:pointer;">
             <?php echo $g['groupname']?>
             <?php if(in_array("delgroupmanager", $this->action) && $this->session->userdata("groupid") != $g['groupid']):?>
-            <a type='button' style="float:right;cursor:pointer" data-toggle="modal" data="<?php echo site_url("admin/delgroup").'/'.$g['groupid'];?>" data-target="#deleteModal">删除该组</a>
+            <a type='button' style="float:right;cursor:pointer" data-toggle="modal" data="<?php echo site_url("superadmin/admin/delgroup").'/'.$g['groupid'];?>" data-target="#deleteModal">删除该组</a>
           <?php endif;?>
           </div>
           <div class="panel-body">
@@ -187,12 +187,12 @@
               <?php foreach ($g['master'] as $key => $value) {?>
                 <li class="list-group-item"><?php echo $value['name']?>
                   <?php if(in_array("delgroupmaster", $this->action) && $value['masterid']!=$this->session->userdata("masterid")):?>
-                  <a id="delete" data="<?php echo site_url("admin/del").'/'.$value['id'];?>" style="float:right;cursor:pointer" data-toggle="modal" data-target="#deleteModal">删除</a></li>
+                  <a id="delete" data="<?php echo site_url("superadmin/admin/del").'/'.$value['id'];?>" style="float:right;cursor:pointer" data-toggle="modal" data-target="#deleteModal">删除</a></li>
                 <?php endif;?>
               <?php }?>
             </ul>
             <?php if(in_array("addgroupmaster", $this->action)) :?>
-            <a type='button' id="add" data-groupid="<?php echo $g["groupid"]?>" style="float:left;" class="btn btn-primary" data-toggle="modal" data-target="#addModal">添加</a>
+            <a type='button' id="add" data-groupid="<?php echo $g["groupid"]?>" style="float:left;" class="btn btn-primary" data-toggle="modal" data-target="#addModal">添加人员</a>
           <?php endif;?>
           </div>
         </div>

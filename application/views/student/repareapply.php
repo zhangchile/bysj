@@ -76,9 +76,15 @@
 			          <td><?php if ($value['type'] == '1') echo '水电维修'; else echo '土木维修';?></td>
 			          <td><?php echo $value['description'];?></td>
 			          <td><?php echo date('Y-m-d H:i:s', $value['applytime'])?></td>
-			          <td><?php if ($value['status'] == '0') echo '已申请'; 
-			          			else if ($value['status'] == '1') echo '已接受';
-			          		?>
+                <td><?php if ($value['status'] == '1') :?> 
+                    申请中 
+                    <?php elseif($value['status'] == '2') :?>
+                    已接受
+                    <?php elseif($value['status'] == '3') :?>
+                    已完成                    
+                    <?php else:?> 
+                    <span class="label label-info">已拒绝</span>
+                    <?php endif;?>
 
 			          </td>
 			        </tr>

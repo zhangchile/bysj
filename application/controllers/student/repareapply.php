@@ -18,7 +18,6 @@ class RepareApply extends CI_Controller {
         $offset = ($page - 1) * $perpage;
         $data = $this->repareorder_model->getallorder($this->_sid, $offset, $perpage);
 
-// var_dump($data);
         //分页
         $total = $this->repareorder_model->getCount($this->_sid);
 
@@ -46,7 +45,7 @@ class RepareApply extends CI_Controller {
                 'booktime'  => null,
                 'description' => $post['description'],
                 'type'        => $post['type'],
-                'status'      => 0,
+                'status'      => 1,
             );
         $this->repareorder_model->insertOrder($data);
         redirect("student/repareapply");

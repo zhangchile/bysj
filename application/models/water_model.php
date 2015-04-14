@@ -19,7 +19,9 @@ class Water_Model extends CI_Model {
 	*	@todo 获得水总数
 	*
 	*/
-    public function getCount() {
+    public function getCount() 
+    {
        return $this->db->count_all_results($this->_table);
     }
+
 }

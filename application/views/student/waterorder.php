@@ -7,7 +7,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">我要够水</h4>
+        <h4 class="modal-title" id="myModalLabel">我要购水</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
@@ -49,10 +49,15 @@
         <?php $this->load->view('template/student_sidebar');?>
         <!--end 左侧栏-->
       <div class="col-md-8">
-        <div>
-            <p>
-              <a data-toggle="modal" data-target="#addModal"  class="btn btn-primary">我要购水</a>
-            </p>
+        <div class="row">
+          <div class="col-md-10">
+            <h4>剩余：<?php echo $waterleft[0]['waterleft'];?>桶</h4>
+          </div>
+          <div class="col-md-2">
+              <p>
+                <a data-toggle="modal" data-target="#addModal"  class="btn btn-primary">我要购水</a>
+              </p>
+          </div>
         </div>
         <div class="panel panel-default">
         <!-- Default panel contents -->
@@ -63,8 +68,8 @@
 		        <tr>
 		          <th>#</th>
 		          <th>类别</th>
-		          <th>数量</th>
-		          <th>总价</th>
+		          <th>数量（桶）</th>
+		          <th>总价（元）</th>
 		          <th>状态</th>
               <th>时间</th>
               <th>交易号</th>
@@ -74,20 +79,20 @@
             <?php foreach ($data as $key => $value) :?>
               <tr>
                 <th scope="row"><?php echo $key + 1 ?></th>
-                <td><?php echo $value['typename']?></td>
+                <td><?php echo $value['typename'];?></td>
                 <td><?php echo $value['number'];?></td>
                 <td><?php echo $value['prize'];?></td>
                 <td><?php if ($value['status'] == '1') :?> 
                     请付款
                     <?php elseif($value['status'] == '2') :?>
-                    已付款
+                    <span class="label label-info">已付款，请等待确认</span>
                     <?php elseif($value['status'] == '3') :?>
                     已确认
                     <?php endif;?>
                 </td>
                 <td><?php echo date('Y-m-d H:i:s', $value['time'])?></td>
                 <td><?php if($value['status'] == '1') :?>
-                    <a data-toggle="modal" href=""  class="btn btn-primary btn-sm">付款</a>
+                    <a data-toggle="modal" href="<?php echo site_url('student/waterorder/pay/').'/'.$value['id']?>"  class="btn btn-primary btn-sm">付款</a>
                   <?php else:?> 
                   <?php echo $value['billid']?>
                   <?php endif;?> 

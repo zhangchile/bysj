@@ -4,6 +4,7 @@ class WaterOrder extends CI_Controller {
 
     public $_sid;
     public $_water;
+    public $_water_left;
 
     public function __construct()
     {
@@ -11,22 +12,25 @@ class WaterOrder extends CI_Controller {
         $this->_sid = $this->session->userdata('sid');
         $this->load->model('waterorder_model');
         $this->load->model('water_model');
+        $this->load->model('dormitory_model');
         $this->config->load('pager_config', TRUE);
         $this->_water = $this->water_model->getall();
+        $this->_water_left = $this->dormitory_model->getWaterLeft($this->_sid);
     }
 
     public function index($page = 1)
     {
         $perpage = 5;
         $offset = ($page - 1) * $perpage;
-        $data = $this->waterorder_model->getorders($this->_sid, $offset, $perpage);
+        $data = $this->waterorder_model->getorders($offset, $perpage, $this->_sid, 'all');
 
         foreach ($data as $wkey => $wvalue) {
             foreach ($this->_water as $key => $value) {
                 if($wvalue['watertype'] == $value['id'])
-                    $data[$key]['typename'] = $value['name'];
+                    $data[$wkey]['typename'] = $value['name'];
             }
         }
+
         //分页
         $total = $this->waterorder_model->getCount($this->_sid);
 
@@ -40,7 +44,7 @@ class WaterOrder extends CI_Controller {
         $pager_config['uri_segment'] = 4;
         $this->pagination->initialize($pager_config);
         //END
-    	$this->load->view('student/waterorder', array('data' => $data));
+    	$this->load->view('student/waterorder', array('data' => $data,'waterleft'=>$this->_water_left));
     }
 
     public function add()
@@ -57,8 +61,8 @@ class WaterOrder extends CI_Controller {
                 'watertype'   => $post['type'],
                 'status'      => 1,
             );
-        $this->waterorder_model->insertOrder($data);
-        redirect("student/waterorder/index");
+        $id = $this->waterorder_model->insertOrder($data);
+        redirect("student/waterorder/pay/".$id);
     }
 
 
@@ -73,5 +77,28 @@ class WaterOrder extends CI_Controller {
             }
         }
         return $water_info;
+    }
+
+    public function pay($id = '')
+    {
+        $post = $this->input->post();
+        if($post) {
+            $data = array(
+                    'billid' => $post['billid']
+                    );
+            $flag = $this->waterorder_model->update($post['id'], $data);
+            redirect('student/waterorder/');
+        } else {
+
+            if(!$id) show_404();
+            $data = $this->waterorder_model->getOneOrder($id, $this->_sid);
+            if(is_array($data)) {
+                $water_info = $this->_getWaterType($data[0]['watertype']);
+                $data[0]['typename'] = $water_info['name'];
+            }
+ 
+            $this->load->view('student/water_pay', array('data'=>$data));
+            
+        }
     }
 }

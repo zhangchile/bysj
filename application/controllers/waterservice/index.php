@@ -39,7 +39,7 @@ class Index extends CI_Controller {
 
         $this->load->library('pagination');
         $pager_config = $this->config->item('pager_config');
-        $pager_config['base_url'] = site_url("student/waterorder/index");
+        $pager_config['base_url'] = site_url("waterservice/index/index");
         $pager_config['total_rows'] = $total;//获取总数
         $pager_config['per_page'] = $perpage; //设置每页显示的条数
         $pager_config['uri_segment'] = 4;

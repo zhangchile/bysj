@@ -66,7 +66,7 @@
 		<table class="table table-striped">
 		      <thead>
 		        <tr>
-		          <th>#</th>
+
 		          <th>类别</th>
 		          <th>数量（桶）</th>
 		          <th>总价（元）</th>
@@ -78,7 +78,7 @@
 		      <tbody>
             <?php foreach ($data as $key => $value) :?>
               <tr>
-                <th scope="row"><?php echo $key + 1 ?></th>
+
                 <td><?php echo $value['typename'];?></td>
                 <td><?php echo $value['number'];?></td>
                 <td><?php echo $value['prize'];?></td>

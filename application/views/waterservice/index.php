@@ -10,10 +10,10 @@
           <select name="status">
             <option value="all">全部</option>
             <option <?php if($this->input->get('status') == '2') echo 'selected'?> value="2">已付款</option>
-            <option <?php if($this->input->get('status') == '3') echo 'selected'?> value="3">已确定</option>
+            <option <?php if($this->input->get('status') == '3') echo 'selected'?> value="3">已确认</option>
             <option <?php if($this->input->get('status') == '1') echo 'selected'?> value="1">未付款</option>
             <option <?php if($this->input->get('status') == '-1') echo 'selected'?> value="-1">已拒绝</option>
-          </select>          
+          </select>
         <button type="submit" class="btn btn-default btn-sm">筛选</button>
       </form>
         <div class="panel panel-default">
@@ -23,7 +23,6 @@
 		<table class="table table-striped">
 		      <thead>
 		        <tr>
-		          <th>#</th>
               <th>宿舍</th>
 		          <th>类别</th>
 		          <th>数量</th>
@@ -37,7 +36,6 @@
 		      <tbody>
             <?php foreach ($data as $key => $value) :?>
               <tr>
-                <th scope="row"><?php echo $key + 1 ?></th>
                 <td><?php echo $this->dormitory->TransformID($value['sid']);?></td>
                 <td><?php echo $value['typename'];?></td>
                 <td><?php echo $value['number'];?>桶</td>

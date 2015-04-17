@@ -1,10 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class DeliveryOrder extends CI_Controller {
+class Index extends CI_Controller {
 
     public $_water;
-    public $_water_left;
-    public $_sid;
 
     public function __construct()
     {
@@ -16,7 +14,6 @@ class DeliveryOrder extends CI_Controller {
         $this->load->library('dormitory');
         $this->config->load('pager_config', TRUE);
         $this->_water = $this->water_model->getall();
-        $this->_water_left = $this->dormitory_model->getWaterLeft($this->_sid);
     }
 
     public function index($page = 1)
@@ -25,38 +22,37 @@ class DeliveryOrder extends CI_Controller {
         $offset = ($page - 1) * $perpage;
         $status = 'all';
 
-        $data = $this->deliveryorder_model->getallorder($offset, $perpage, $this->_sid, $status);
-
+        if($this->input->get('status'))
+            $status = $this->input->get('status');
+        $data = $this->deliveryorder_model->getallorder($offset, $perpage, '', $status);
         //分页
-        $total = $this->deliveryorder_model->getCount($this->_sid);
+        $total = $this->deliveryorder_model->getCount();
 
         $totalpage = ceil($total / $perpage);
 
         $this->load->library('pagination');
         $pager_config = $this->config->item('pager_config');
-        $pager_config['base_url'] = site_url("student/deliveryorder/index");
+        $pager_config['base_url'] = site_url("deliveryservice/index/index");
         $pager_config['total_rows'] = $total;//获取总数
         $pager_config['per_page'] = $perpage; //设置每页显示的条数
         $pager_config['uri_segment'] = 4;
         $this->pagination->initialize($pager_config);
         //END
-        $this->load->view('student/deliveryorder', array('data' => $data, 'waterleft'=>$this->_water_left));
+        $this->load->view('deliveryservice/index', array('data' => $data));
     }
 
-    public function add()
+    public function update()
     {
-        $data = $this->input->post();
+        $data = $this->input->get();
         if(!$data) show_404();
         $arr = array(
-                'id'       => null,
-                'sid'      => $this->_sid,
-                'status'   => 1,
-                'number'   => $data['number'],
-                'booktime' => $data['booktime'],
-                'time'     => time()
+                'status' => 2
             );
-        $flag = $this->deliveryorder_model->insertOrder($arr);
-        redirect('student/deliveryorder/index');
+        $flag = $this->deliveryorder_model->update($data['id'], $arr);
+        //更新用户的剩余水量
+        $waterleft = $this->dormitory_model->getWaterLeft($data['sid']);
+        $this->dormitory_model->update($data['sid'], array('waterleft' =>$waterleft[0]['waterleft'] - $data['number']));
+        redirect('deliveryservice/index/');
     }
 
 

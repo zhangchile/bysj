@@ -2,17 +2,21 @@
 
 class Index extends CI_Controller {
 
+    public $action; 
     public $_sid; 
     public $_masterid;
+    public $leftmenukey;
 
     public function __construct()
     {
         parent::__construct();
+        $this->action = explode(",", $this->session->userdata("action"));
         $this->_sid = $this->session->userdata('sid');
         $this->_masterid = $this->session->userdata("masterid");
         $this->load->model('repareorder_model');
         $this->load->model('acl_model');
         $this->config->load('pager_config',TRUE);
+        $this->leftmenukey = '/reparedepartment/';
     }
 
     public function index($page = 1)

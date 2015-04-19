@@ -56,12 +56,16 @@
                     <?php endif;?>
                 </td>
                 <td>
+                  <?php if(in_array('editreparestatus', $this->action)):?>
                   <?php if($value['status'] == '1'):?>
                   <a class="btn btn-primary btn-sm" href="<?php echo site_url('reparedepartment/index/update/?status=2&id=').$value['id'];?>">接受</a>
                   <a class="btn btn-default btn-sm" href="<?php echo site_url('reparedepartment/index/update/?status=-1&id=').$value['id'];?>">拒绝</a>
                 <?php elseif($value['status'] == '2'):?>
                   <a class="btn btn-primary btn-sm" href="<?php echo site_url('reparedepartment/index/update/?status=3&id=').$value['id'];?>">完成</a>
               <?php endif;?>
+            <?php else :?>
+            无权限
+            <?php endif;?>
                 </td>
               </tr>
             <?php endforeach;?>

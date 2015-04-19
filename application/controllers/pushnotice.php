@@ -2,6 +2,7 @@
 
 class PushNotice extends CI_Controller {
     public $action = null; 
+    public $leftmenukey;
 
     public function __construct()
     {
@@ -9,6 +10,7 @@ class PushNotice extends CI_Controller {
         $this->load->model("acl_model");
         $this->load->model("notice_model");
         $this->action = explode(",", $this->session->userdata("action"));
+        $this->leftmenukey = '/pushnotice/';
     }
 
     public function index() {

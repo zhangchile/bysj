@@ -3,17 +3,22 @@
 class Index extends CI_Controller {
 
     public $_water;
+    public $action;
+    public $leftmenukey;
 
     public function __construct()
     {
         parent::__construct();
+        $this->action = explode(",", $this->session->userdata("action"));
         $this->_sid = $this->session->userdata('sid');
         $this->load->model('dormitory_model');
         $this->load->model('water_model');
+        $this->load->model('acl_model');
         $this->load->model('deliveryorder_model');
         $this->load->library('dormitory');
         $this->config->load('pager_config', TRUE);
         $this->_water = $this->water_model->getall();
+        $this->leftmenukey = '/deliveryservice/';
     }
 
     public function index($page = 1)
@@ -25,6 +30,7 @@ class Index extends CI_Controller {
         if($this->input->get('status'))
             $status = $this->input->get('status');
         $data = $this->deliveryorder_model->getallorder($offset, $perpage, '', $status);
+        $sidebar_data = $this->acl_model->GetSiderBar($this->session->userdata("masterid"));
         //分页
         $total = $this->deliveryorder_model->getCount();
 
@@ -38,7 +44,7 @@ class Index extends CI_Controller {
         $pager_config['uri_segment'] = 4;
         $this->pagination->initialize($pager_config);
         //END
-        $this->load->view('deliveryservice/index', array('data' => $data));
+        $this->load->view('deliveryservice/index', array('data' => $data,'sidebar'=>$sidebar_data));
     }
 
     public function update()

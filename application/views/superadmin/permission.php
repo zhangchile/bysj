@@ -110,7 +110,7 @@
               <?php foreach ($g['permission'] as $key => $value) {?>
                 <li class="list-group-item"><?php echo $value['actionname']?>
                   <?php if(in_array("delpermission", $this->action)):?>
-                  <a id="delete" data="<?php echo site_url("permission/del").'/'.$value['id'];?>" style="float:right;cursor:pointer" data-toggle="modal" data-target="#deleteModal">删除</a>
+                  <a id="delete" data="<?php echo site_url("superadmin/permission/del").'/'.$value['id'];?>" style="float:right;cursor:pointer" data-toggle="modal" data-target="#deleteModal">删除</a>
                 <?php endif;?>
                 </li>
               <?php }?>

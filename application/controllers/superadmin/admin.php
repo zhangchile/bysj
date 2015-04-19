@@ -1,13 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
-    public $action = null; 
+    public $action = null;
+    public $leftmenukey;
 
     public function __construct()
     {
         parent::__construct();
         $this->load->model("acl_model");
         $this->action = explode(",", $this->session->userdata("action"));
+        $this->leftmenukey = '/superadmin/admin/';
     }
 
     public function index() {

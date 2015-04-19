@@ -2,6 +2,7 @@
 
 class Notice extends CI_Controller {
     public $action = null; 
+    public $leftmenukey;
 
     public function __construct()
     {
@@ -10,6 +11,7 @@ class Notice extends CI_Controller {
         $this->load->model("notice_model");
         $this->config->load('pager_config',TRUE);
         $this->action = explode(",", $this->session->userdata("action"));
+        $this->leftmenukey = '/notice/';
     }
 
     public function index($page = 1) {

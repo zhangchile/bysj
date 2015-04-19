@@ -4,7 +4,7 @@
               主页
             </a>
             <?php foreach ($sidebar as $key => $value) :?>
-            <a href="<?php echo site_url($value['uri']);?>" class="list-group-item <?php if($this->uri->segment(1)==$value['uri']) echo " active ";?>">
+            <a href="<?php echo site_url($value['uri']);?>" class="list-group-item <?php if($this->leftmenukey == $value['uri']) echo " active ";?>">
               <?php echo $value['actioncolumnname'];?>
             </a>
             <?php endforeach;?>

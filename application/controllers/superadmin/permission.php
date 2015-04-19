@@ -2,11 +2,13 @@
 
 class Permission extends CI_Controller {
     public $action = null;     
+    public $leftmenukey;
     public function __construct()
     {
         parent::__construct();
         $this->load->model("acl_model");
         $this->action = explode(",", $this->session->userdata("action"));
+        $this->leftmenukey = '/superadmin/permission/';
     }
 
     public function index() {

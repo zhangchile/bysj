@@ -3,7 +3,7 @@
 
       <div class="row row-offcanvas row-offcanvas-right">
         <!-- 左侧栏-->
-        <?php $this->load->view('template/student_sidebar');?>
+        <?php $this->load->view('template/sidebar');?>
         <!--end 左侧栏-->
       <div class="col-md-8">
         <form method="get" action="<?php echo site_url('deliveryservice/index');?>">
@@ -56,7 +56,7 @@
                     晚上（19点~21点）
                   <?php endif;?> 
                 </td>
-                <td><?php if($value['status'] == '1') :?>
+                <td><?php if($value['status'] == '1' && in_array('editdeliverystatus', $this->action)) :?>
                     <a data-toggle="modal" href="<?php echo site_url('deliveryservice/index/update/').'?status=2&id='.$value['id'].'&sid='.$value['sid'].'&number='.$value['number']?>"  class="btn btn-primary btn-sm">确认</a>
                   <?php else:?> 
                   <?php endif;?> 

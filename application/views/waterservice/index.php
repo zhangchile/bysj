@@ -2,7 +2,7 @@
 
       <div class="row row-offcanvas row-offcanvas-right">
         <!-- 左侧栏-->
-        <?php $this->load->view('template/student_sidebar');?>
+        <?php $this->load->view('template/sidebar');?>
         <!--end 左侧栏-->
       <div class="col-md-8">
         <form method="get" action="<?php echo site_url('waterservice/index');?>">
@@ -50,9 +50,13 @@
                 </td>
                 <td><?php echo date('Y-m-d H:i:s', $value['time'])?></td>
                 <td><?php echo $value['billid']?></td>
-                <td><?php if($value['status'] == '2') :?>
+                <td><?php if(in_array('editorderstatus', $this->action)):?>
+                <?php if($value['status'] == '2') :?>
                     <a data-toggle="modal" href="<?php echo site_url('waterservice/index/update/').'?status=3&id='.$value['id'].'&sid='.$value['sid'].'&number='.$value['number']?>"  class="btn btn-primary btn-sm">确认</a>
                   <?php else:?> 
+                  <?php endif;?>
+                <?php else:?>
+                  无权限
                   <?php endif;?> 
                 </td>
               </tr>
@@ -65,11 +69,5 @@
 
       </div>
       </div><!--/row-->
-<script type="text/javascript">
-$("#number").keyup(function() {
-  var prize = $('#select').find("option:selected").attr('data-prize');
-  $("#totalprize").val((prize * $(this).val()).toFixed(2) + "元");
-});
-</script>
 
 <?php $this->load->view("template/footer.php");?>

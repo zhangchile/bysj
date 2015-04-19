@@ -1,11 +1,46 @@
 <?php $this->load->view("template/header.php");?>
 
+<!-- 修改桶装水价格Modal -->
+  <form action="<?php echo site_url('waterservice/updateprize');?>" method="post" class="form-horizontal" role="form">  
+<div class="modal fade" id="editprizeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">修改桶装水价格</h4>
+      </div>
+      <div class="modal-body">
+         <div class="form-group">
+       <label for="sname" class="col-sm-3 control-label">名称</label>
+       <div class="col-sm-8">
+          <input class="form-control" type="text" name="prize" value=''>
+          </div>
+       </div>
+
+         <div class="form-group">
+       <label for="sname" class="col-sm-3 control-label">价格</label>
+       <div class="col-sm-8">
+          <input class="form-control" type="text" name="prize" value=''>
+          </div>
+       </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="submit" class="btn btn-primary">保存</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</form>
+
       <div class="row row-offcanvas row-offcanvas-right">
         <!-- 左侧栏-->
         <?php $this->load->view('template/sidebar');?>
         <!--end 左侧栏-->
       <div class="col-md-8">
-        <form method="get" action="<?php echo site_url('waterservice/index');?>">
+        <div class="row">
+          <div class="col-md-12">
+        <form style="float:left;" method="get" action="<?php echo site_url('waterservice/index');?>">
           <label >状态：</label>
           <select name="status">
             <option value="all">全部</option>
@@ -16,7 +51,12 @@
           </select>
         <button type="submit" class="btn btn-default btn-sm">筛选</button>
       </form>
-        <div class="panel panel-default">
+      <?php if(in_array('editprize', $this->action)):?>
+      <a type='button' class="btn btn-primary btn-sm" style="float:right;cursor:pointer" data-toggle="modal" data-target="#editprizeModal">修改桶装水价格</a>
+      <?php endif;?>   
+      </div>   
+    </div>
+      <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading" style="text-align: center;">订单记录</div>
 

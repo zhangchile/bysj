@@ -30,7 +30,7 @@
         <div class="form-group">
        <label for="booktime" class="col-sm-3 control-label">预约时间</label>
        <div class="col-sm-8">
-       	<input type="text" name="booktime" value="<?php echo date('Y-m-d');?>">
+       	<input type="text" name="booktime" class="form-control" value="<?php echo date('Y-m-d');?>">
           </div>
        </div>
 

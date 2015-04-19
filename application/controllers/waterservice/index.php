@@ -65,4 +65,16 @@ class Index extends CI_Controller {
         $this->dormitory_model->update($data['sid'], array('waterleft' => $data['number'] + $waterleft[0]['waterleft']));
         redirect('waterservice/index/');
     }
+
+    public function updateprize()
+    {
+        $data = $this->input->post();
+        if(!$data) show_404();
+        $arr = array(
+                'name' => $data['name'],
+                'prize' => $data['prize']
+            );
+        $flag = $this->water_model->update($post['id'], $arr);
+        redirect('waterservice/index/');
+    }
 }

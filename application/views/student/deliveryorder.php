@@ -52,7 +52,9 @@
           </div>
           <div class="col-md-2">
               <p>
+                <?php if($waterleft[0]['waterleft'] != 0) :?>
                 <a data-toggle="modal" data-target="#addModal"  class="btn btn-primary">申请送水</a>
+              <?php endif;?>
               </p>
           </div>
         </div>

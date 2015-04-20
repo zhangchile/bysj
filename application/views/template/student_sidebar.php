@@ -12,7 +12,7 @@
     <a href="<?php echo site_url("student/deliveryorder");?>" class="list-group-item <?php if($this->uri->segment(2)=='deliveryorder') echo " active ";?>">
       桶装水配送
     </a>
-    <a href="#" class="list-group-item <?php if($this->uri->segment(2)=='') echo " active ";?>">
+    <a href="<?php echo site_url("student/checkwe");?>" class="list-group-item <?php if($this->uri->segment(2)=='checkwe') echo " active ";?>">
       宿舍水电查询
     </a>    
     <a href="#" class="list-group-item ">

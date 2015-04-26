@@ -15,7 +15,7 @@
 
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url();?>public/css/login.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/main.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
@@ -43,7 +43,7 @@
       </div><!-- /.container -->
 <!--       <div class="navbar-header" >navbar-header</div> -->
     </div><!-- /.navbar -->
-    <div class="container">
+    <div class="container body-content">
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -92,25 +92,29 @@
             <form class="form-signin" role="form" action="<?php echo site_url('login/check');?>" method="post">
               <h2 class="form-signin-heading" style="margin-top:0px;">请登录</h2>
               <input type="text" class="form-control" placeholder="请输入用户名" required autofocus name="uid">
+              <p></p>
               <input type="password" class="form-control" placeholder="请输入密码" required name="pwd">
                 <input type="radio" value="student" name="type" checked> 学生
               <input type="radio" value="admin" name="type"> 管理员
+              <p></p>
               <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
             </form>
             <?php else:?>
             <form class="form-signin" role="form" action="<?php echo site_url('login/check');?>" method="post">
               <h2 class="form-signin-heading" style="margin-top:0px;">请登录</h2>
               <input type="text" class="form-control" placeholder="请输入用户名" required autofocus name="uid">
+              <p></p>
               <input type="password" class="form-control" placeholder="请输入密码" required name="pwd">
                 <input type="radio" value="student" name="type" checked> 学生
               <input type="radio" value="admin" name="type"> 管理员
+              <p></p>
               <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
             </form>
           <?php endif;?>
       </div>
       </div>
-
-      <footer style="position: fixed;bottom: 0px;">
+      <hr>
+      <footer >
         <p>&copy; 张智励 2015</p>
       </footer>
     </div> <!-- /container -->

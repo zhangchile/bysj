@@ -8,6 +8,7 @@
     <link href="<?php echo base_url();?>public/css/bootstrap_metro.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url();?>public/css/offcanvas.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>public/css/main.css">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -39,7 +40,7 @@
       </div><!-- /.container -->
 <!--       <div class="navbar-header" >navbar-header</div> -->
     </div><!-- /.navbar -->
-    <div class="container">
+    <div class="container body-content">
 
       <div class="row row-offcanvas row-offcanvas-right">
       <div class="col-md-8">

@@ -79,7 +79,7 @@
                 <td><?php if ($value['status'] == '1') :?> 
                     请等待确认
                     <?php elseif($value['status'] == '2') :?>
-                    <span class="label label-info">已确认</span>
+                    <span class="label label-success">已确认</span>
                     <?php elseif($value['status'] == '3') :?>
                     已配送
                     <?php endif;?>

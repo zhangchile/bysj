@@ -8,6 +8,7 @@
     <link href="<?php echo base_url();?>public/css/bootstrap_metro.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url();?>public/css/offcanvas.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>public/css/main.css" rel="stylesheet">
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -29,11 +30,11 @@
       </div><!-- /.container -->
     </div><!-- /.navbar -->
     
-    <div class="container">
+    <div class="container body-content">
 
      <div class="row">
         <div class="col-md-12">
-          <h2 >综合设计：宿舍管理与服务系统</h2>
+          <h2 >毕业设计：宿舍管理与服务系统</h2>
           <h3>开发者：11级网络2班 3111006360 张智励</h3>
           <h3>开发环境：PHP+MySQL</h3>
           <h3>PHP版本：<?php echo PHP_VERSION; ?></h3>

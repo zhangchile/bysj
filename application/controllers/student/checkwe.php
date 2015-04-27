@@ -7,7 +7,6 @@ class Checkwe extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model("notice_model");
         $this->load->model("wrecord_model");
         $this->load->model("erecord_model");
         $this->config->load('pager_config',TRUE);

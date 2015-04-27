@@ -13,7 +13,10 @@ class Login extends CI_Controller {
 
     public function index($page = 1)
     {
-
+        if($this->session->userdata('is_login') == true) {
+            //跳转
+            redirect('index');
+        }
         $error = $this->input->get("error") ? true : false;
         $perpage = 5;
         $offset = ($page - 1) * $perpage;        
@@ -76,6 +79,7 @@ class Login extends CI_Controller {
                         'truename'   => $this->dormitory->TransformID($flag[0]['sid']),
                         'type'       => $flag[0]['type'],
                         'department' => $flag[0]['department'],
+                        'identity'  => 'student',
                         'is_login'   => true,
                     );
                 $this->session->set_userdata($arr);//设置session

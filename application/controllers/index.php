@@ -13,7 +13,7 @@ class Index extends CI_Controller {
         if($this->session->userdata('identity') == "superadmin") 
             redirect("superadmin/homepage");
         else if($this->session->userdata('identity') == "student") {
-            redirect("building");
+            redirect("student/index");
         } else {
             redirect("login");
         }

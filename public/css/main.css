@@ -1,6 +1,12 @@
   body {
     background: url("../img/background.png") repeat;
   }
+
+  body > .navbar {
+    box-shadow: 0 2px 20px  rgba(0, 0, 0, 0.8);
+  -moz-box-shadow: 0 2px 20px  rgba(0, 0, 0, 0.8);
+  -webkit-box-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+  }
   .body-content{
     background-color: #fff;
     padding-top: 15px;

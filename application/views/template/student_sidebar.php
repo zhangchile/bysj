@@ -14,7 +14,10 @@
     </a>
     <a href="<?php echo site_url("student/checkwe");?>" class="list-group-item <?php if($this->uri->segment(2)=='checkwe') echo " active ";?>">
       宿舍水电查询
-    </a>    
+    </a>
+    <a href="<?php echo site_url("student/recharge");?>" class="list-group-item <?php if($this->uri->segment(2)=='recharge') echo " active ";?>">
+      宿舍水电充值
+    </a>   
     <a href="#" class="list-group-item ">
         更多功能正在开发中
       </a>

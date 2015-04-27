@@ -60,6 +60,7 @@ class WaterOrder extends CI_Controller {
                 'prize'       => $post['number'] * $water_info['prize'],
                 'watertype'   => $post['type'],
                 'status'      => 1,
+                'billid'      => '',
             );
         $id = $this->waterorder_model->insertOrder($data);
         redirect("student/waterorder/pay/".$id);

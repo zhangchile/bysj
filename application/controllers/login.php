@@ -94,29 +94,7 @@ class Login extends CI_Controller {
     
     public function logout()
     {
-        if($this->session->userdata('masterid'))
-        {
-            $array_items = array(
-                        'masterid'  => '', 
-                        'truename'  => '', 
-                        'is_login'  => '',
-                        'identity'  => '',
-                        'groupid'   => '',
-                        'groupname' => ''
-                    );
-            $this->session->unset_userdata($array_items);
-            redirect('login');
-        } else {
-            $arr = array(
-                    'id'         => '',
-                    'sid'        => '',
-                    'truename'   => '',
-                    'type'       => '',
-                    'department' => '',
-                    'is_login'   => '',
-                );
-            $this->session->unset_userdata($array_items);
-            redirect('login');
-        }
+        $this->session->sess_destroy();
+        redirect('login');   
     }
 }

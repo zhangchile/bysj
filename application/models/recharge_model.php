@@ -6,12 +6,18 @@ class Recharge_Model extends CI_Model {
 	public $_field = array('id','sid','applytime','booktime','description','type','status');
 
 	/**
-	*	@todo 获得某个宿舍所有的充值单
+	*	@todo 获得某个宿舍所有的水电单
 	* 
 	*/
-	public function getAllOrder($dormitory, $offset, $perpage)
+	public function getAll($dormitory, $offset, $perpage, $type, $operate, $status)
 	{
-        $this->db->where("sid",$dormitory);
+        $this->db->where("sid", $dormitory);
+    	if($type != '')
+    		$this->db->where('type', $type);
+    	if($operate != '')
+    		$this->db->where('operate', $operate);
+    	if($status != '')
+    		$this->db->where('status', $status);
         $this->db->order_by("applytime", "desc");
         $query = $this->db->get($this->_table, $perpage, $offset);
         return $query->result_array();		
@@ -61,8 +67,13 @@ class Recharge_Model extends CI_Model {
 	*	@todo 获得某个宿舍维修单总数
 	*
 	*/
-    public function getCount($sid) {
-    	$this->db->where('sid', $sid);
+    public function getCount($type, $operate, $status) {
+    	if($type != '')
+    		$this->db->where('type', $type);
+    	if($operate != '')
+    		$this->db->where('operate', $operate);
+    	if($status != '')
+    		$this->db->where('status', $status);
        return $this->db->count_all_results($this->_table);
     }
 

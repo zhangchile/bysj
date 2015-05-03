@@ -3,7 +3,7 @@
 class Recharge_Model extends CI_Model {
 
 	public $_table = "recharge";
-	public $_field = array('id','sid','applytime','booktime','description','type','status');
+	public $_field = array('id','sid','type','operate','status','change','date');
 
 	/**
 	*	@todo 获得某个宿舍所有的水电单
@@ -18,7 +18,7 @@ class Recharge_Model extends CI_Model {
     		$this->db->where('operate', $operate);
     	if($status != '')
     		$this->db->where('status', $status);
-        $this->db->order_by("applytime", "desc");
+        $this->db->order_by("date", "desc");
         $query = $this->db->get($this->_table, $perpage, $offset);
         return $query->result_array();		
 	}
@@ -36,7 +36,7 @@ class Recharge_Model extends CI_Model {
 		if($status) {
 			$this->db->where("status", $status);
 		}
-        $this->db->order_by("applytime", "desc");
+        $this->db->order_by("date", "desc");
         $query = $this->db->get($this->_table, $perpage, $offset);
         return $query->result_array();
 	}

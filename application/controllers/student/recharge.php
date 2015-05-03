@@ -28,9 +28,9 @@ class Recharge extends CI_Controller {
         }
         $perpage = 5;
         $offset = ($page - 1) * $perpage;
-        $data = 0;//$this->recharge_model->getAll($this->_sid, $offset, $perpage, $type, $status, $operate);
+        $data = $this->recharge_model->getAll($this->_sid, $offset, $perpage, $type, $status, $operate);
         //分页
-        $total = 0;//$this->recharge_model->getCount($type, $operate, $status);
+        $total = $this->recharge_model->getCount($type, $operate, $status);
 
         $totalpage = ceil($total / $perpage);
 

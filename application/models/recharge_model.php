@@ -3,13 +3,13 @@
 class Recharge_Model extends CI_Model {
 
 	public $_table = "recharge";
-	public $_field = array('id','sid','type','operate','status','change','date');
+	public $_field = array('id','sid','billid','type','operate','status','changes','date');
 
 	/**
 	*	@todo 获得某个宿舍所有的水电单
 	* 
 	*/
-	public function getAll($dormitory, $offset, $perpage, $type, $operate, $status)
+	public function getAll($dormitory, $offset, $perpage, $type, $status, $operate)
 	{
         $this->db->where("sid", $dormitory);
     	if($type != '')
@@ -49,16 +49,26 @@ class Recharge_Model extends CI_Model {
 	public function insertOrder($data)
 	{
         $this->db->insert($this->_table, $data);
-        return $this->db->affected_rows();
+        return $this->db->insert_id();
 	}
 
 	/**
-	*	@todo 更新一条维修单
+	*	@todo 获得订单信息
+	* 
+	*/
+	public function getOneOrder($id ,$sid)
+	{
+		$query = $this->db->get_where($this->_table, array('id'=>$id, 'sid'=>$sid));
+		return $query->result_array();	
+	}
+
+	/**
+	*	@todo 更新一条订单
 	*
 	*/
-	public function updateOrder($id, $data)
+	public function update($id, $data)
 	{
-        $this->db->where('id', $id);
+		$this->db->where('id', $id);
         $this->db->update($this->_table, $data);
         return $this->db->affected_rows();
 	}	

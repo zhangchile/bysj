@@ -10,6 +10,7 @@ class Recharge extends CI_Controller {
 
         $this->config->load('pager_config',TRUE);
         $this->load->model('recharge_model');
+        $this->load->model('dormitory_model');
         $this->_sid = $this->session->userdata('sid');
     }
 
@@ -29,6 +30,7 @@ class Recharge extends CI_Controller {
         $perpage = 5;
         $offset = ($page - 1) * $perpage;
         $data = $this->recharge_model->getAll($this->_sid, $offset, $perpage, $type, $status, $operate);
+        $charge_left = $this->dormitory_model->getChargeLeft($this->_sid);
         //分页
         $total = $this->recharge_model->getCount($type, $operate, $status);
 
@@ -42,6 +44,45 @@ class Recharge extends CI_Controller {
         $pager_config['uri_segment'] = 4;
         $this->pagination->initialize($pager_config);
         //END
-    	$this->load->view('student/recharge', array('data'=>$data));
+    	$this->load->view('student/recharge', array('data'=>$data,'chargeLeft'=>$charge_left));
+    }
+
+    public function add()
+    {
+        $post = $this->input->post();
+        if(!$post) show_404();
+        
+        $data = array(
+                'id'      => null,
+                'sid'     => $this->_sid,
+                'billid'  => null,
+                'type'    => $post['type'],
+                'operate' => '1',
+                'status'  => '1',
+                'changes' => $post['changes'],
+                'date'    => time(),
+            );
+        $id = $this->recharge_model->insertOrder($data);
+        redirect('student/recharge/index'.$id);
+    }
+
+    public function pay($id='')
+    {
+        $post = $this->input->post();
+        if($post) {
+            $data = array(
+                    'billid' => $post['billid'],
+                    'status' => '2',
+                    );
+            $flag = $this->recharge_model->update($post['id'], $data);
+            redirect('student/recharge/');
+        } else {
+
+            if(!$id) show_404();
+            $data = $this->recharge_model->getOneOrder($id, $this->_sid);
+ 
+            $this->load->view('student/recharge_pay', array('data'=>$data));
+            
+        }
     }
 }

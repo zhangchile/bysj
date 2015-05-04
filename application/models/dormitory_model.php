@@ -2,7 +2,7 @@
 
 class Dormitory_Model extends CI_Model {
 	protected $_table = 'dormitory';
-	protected $_field = array('id','sid','password','type','department','waterleft');
+	protected $_field = array('id','sid','password','type','department','waterleft','watercharge','electricitycharge');
 
 	/**
 	*	@todo 获得宿舍剩余水量
@@ -10,6 +10,17 @@ class Dormitory_Model extends CI_Model {
 	*/
     public function getWaterLeft($sid) 
     {
+    	$query = $this->db->get_where($this->_table, array('sid'=>$sid));
+    	return $query->result_array();
+    }
+
+	/**
+	*	@todo 获得宿舍水电费余额
+	*
+	*/
+    public function getChargeLeft($sid) 
+    {
+    	$this->db->select('id,sid,watercharge,electricitycharge');
     	$query = $this->db->get_where($this->_table, array('sid'=>$sid));
     	return $query->result_array();
     }

@@ -23,7 +23,7 @@
         <div class="form-group">
        <label for="description" class="col-sm-3 control-label">问题描述</label>
        <div class="col-sm-8">
-       	<textarea name="description"></textarea>
+       	<textarea name="description" style="width:100%;"></textarea>
           </div>
        </div>
 

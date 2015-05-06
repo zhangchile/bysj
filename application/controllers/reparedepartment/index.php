@@ -14,7 +14,7 @@ class Index extends CI_Controller {
         $this->_sid = $this->session->userdata('sid');
         $this->_masterid = $this->session->userdata("masterid");
         $this->load->model('repareorder_model');
-        $this->load->model('acl_model');
+        $this->load->library("dormitory");
         $this->config->load('pager_config',TRUE);
         $this->leftmenukey = '/reparedepartment/';
     }

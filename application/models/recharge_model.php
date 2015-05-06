@@ -24,18 +24,19 @@ class Recharge_Model extends CI_Model {
 	}
 
 	/**
-	*	@todo 获得所有的维修单
-	* 	@param int 维修单类别，1-水电，2-土木，''==全部
+	*	@todo 获得所有的充值请求
 	*	@return array
 	*/
-	public function getOrders($type = '', $offset, $perpage, $status = '')
+	public function getOrders($offset, $perpage, $type, $status, $operate, $sid)
 	{
-		if($type) {
-        	$this->db->where("type", $type);
-		}
-		if($status) {
-			$this->db->where("status", $status);
-		}
+		if($sid != '')
+    		$this->db->where('sid', $sid);
+		if($type != '')
+    		$this->db->where('type', $type);
+    	if($status != '')
+    		$this->db->where('status', $status);
+    	if($operate != '')
+    		$this->db->where('operate', $operate);
         $this->db->order_by("date", "desc");
         $query = $this->db->get($this->_table, $perpage, $offset);
         return $query->result_array();
@@ -77,7 +78,9 @@ class Recharge_Model extends CI_Model {
 	*	@todo 获得某个宿舍维修单总数
 	*
 	*/
-    public function getCount($type, $operate, $status) {
+    public function getCount($type, $operate, $status, $sid) {
+    	if($sid != '')
+    		$this->db->where('sid', $sid);
     	if($type != '')
     		$this->db->where('type', $type);
     	if($operate != '')

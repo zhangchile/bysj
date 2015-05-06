@@ -50,12 +50,13 @@
             <option <?php if($this->input->get('type') == '1') echo 'selected'?> value="1">水费</option>
             <option <?php if($this->input->get('type') == '2') echo 'selected'?> value="2">电费</option>
           </select>
-          <label >类别：</label>
+          <label >动作：</label>
           <select name="operate">
             <option value="all">全部</option>
             <option <?php if($this->input->get('operate') == '1') echo 'selected'?> value="1">充值</option>
             <option <?php if($this->input->get('operate') == '2') echo 'selected'?> value="2">扣费</option>
-          </select><label >状态：</label>
+          </select>
+          <label >状态：</label>
           <select name="status">
             <option value="all">全部</option>
             <option <?php if($this->input->get('status') == '1') echo 'selected'?> value="1">已提交</option>

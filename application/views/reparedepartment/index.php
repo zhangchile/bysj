@@ -30,7 +30,7 @@
     <table class="table table-striped">
           <thead>
             <tr>
-              <th>#</th>
+              <th>宿舍</th>
               <th>类型</th>
               <th>描述</th>
               <th>申请时间</th>
@@ -41,7 +41,7 @@
           <tbody>
             <?php foreach ($data as $key => $value) :?>
               <tr>
-                <th scope="row"><?php echo $key + 1 ;?></th>
+                <td><?php echo $this->dormitory->TransformID($value['sid']);?></td>
                 <td><?php if ($value['type'] == '1') echo '水电维修'; else echo '土木维修';?></td>
                 <td><?php echo $value['description'];?></td>
                 <td><?php echo date('Y-m-d H:i:s', $value['applytime'])?></td>

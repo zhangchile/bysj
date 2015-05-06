@@ -32,7 +32,7 @@ class Recharge extends CI_Controller {
         $data = $this->recharge_model->getAll($this->_sid, $offset, $perpage, $type, $status, $operate);
         $charge_left = $this->dormitory_model->getChargeLeft($this->_sid);
         //分页
-        $total = $this->recharge_model->getCount($type, $operate, $status);
+        $total = $this->recharge_model->getCount($type, $operate, $status, $this->_sid);
 
         $totalpage = ceil($total / $perpage);
 

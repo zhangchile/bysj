@@ -1,7 +1,8 @@
 <?php $this->load->view("template/header.php");?>
 
 <!-- 修改桶装水价格Modal -->
-  <form action="<?php echo site_url('waterservice/updateprize');?>" method="post" class="form-horizontal" role="form">  
+  <form action="<?php echo site_url('waterservice/index/updateprize');?>" method="post" class="form-horizontal" role="form"> 
+  <input type='hidden' name="id" value="<?php echo $this->_water[0]['id']?>"> 
 <div class="modal fade" id="editprizeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -11,16 +12,16 @@
       </div>
       <div class="modal-body">
          <div class="form-group">
-       <label for="sname" class="col-sm-3 control-label">名称</label>
+       <label for="name" class="col-sm-3 control-label">名称</label>
        <div class="col-sm-8">
-          <input class="form-control" type="text" name="prize" value=''>
+          <input class="form-control" type="text" name="name" value='<?php echo $this->_water[0]['name']?>'>
           </div>
        </div>
 
          <div class="form-group">
        <label for="sname" class="col-sm-3 control-label">价格</label>
        <div class="col-sm-8">
-          <input class="form-control" type="text" name="prize" value=''>
+          <input class="form-control" type="text" name="prize" value='<?php echo $this->_water[0]['prize']?>'>
           </div>
        </div>
       </div>

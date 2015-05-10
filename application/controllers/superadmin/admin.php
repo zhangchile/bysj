@@ -23,7 +23,7 @@ class Admin extends CI_Controller {
             $mastergroup = $this->acl_model->GetMasterGroup($value['groupid']);
             $GroupManager[$key]["master"] = $mastergroup;
         }
-
+// var_dump($GroupManager);
         $this->load->view('superadmin/admin_index', array("group"=>$GroupManager,"AllMaster"=>$AllMaster,"sidebar"=>$sidebar_str));
     }
 
@@ -118,10 +118,10 @@ class Admin extends CI_Controller {
 
     public function msg_succ()
     {
-        $this->load->view('msg_succ', array("url"=>site_url('admin'),"msg"=>'添加成功！'));
+        $this->load->view('msg_succ', array("url"=>site_url('superadmin/admin'),"msg"=>'添加成功！'));
     }
     public function msg_fail()
     {
-        $this->load->view('msg_fail', array("url"=>site_url('admin'),"msg"=>'请勿重复添加！'));
+        $this->load->view('msg_fail', array("url"=>site_url('superadmin/admin'),"msg"=>'请勿重复添加！'));
     }
 }

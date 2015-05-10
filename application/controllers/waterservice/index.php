@@ -69,12 +69,13 @@ class Index extends CI_Controller {
     public function updateprize()
     {
         $data = $this->input->post();
+        // var_dump($data);exit;
         if(!$data) show_404();
         $arr = array(
                 'name' => $data['name'],
                 'prize' => $data['prize']
             );
-        $flag = $this->water_model->update($post['id'], $arr);
+        $flag = $this->water_model->update($data['id'], $arr);
         redirect('waterservice/index/');
     }
 }

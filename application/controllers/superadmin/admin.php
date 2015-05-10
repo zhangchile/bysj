@@ -13,6 +13,7 @@ class Admin extends CI_Controller {
     }
 
     public function index() {
+        // var_dump($this->action);
         $GroupManager = $this->acl_model->GetGroupManager();
         $AllMaster = $this->acl_model->GetAllMaster();
         $sidebar_data = $this->acl_model->GetSiderBar($this->session->userdata("masterid"));

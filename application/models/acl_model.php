@@ -65,6 +65,36 @@ class ACL_Model extends CI_Model {
 
 
     /**
+    *   获得管理员账户的信息列表
+    *
+    *
+    *
+    *
+    */
+    public function GetAllMasterInfo($offset, $perpage) {
+        $sql = "SELECT `master`.*, `groupmanager`.`groupname`, `groupmanager`.`groupinfo` 
+                FROM `master`
+                LEFT JOIN `mastergroup` ON `mastergroup`.`masterid` = `master`.`id`
+                LEFT JOIN `groupmanager` ON `groupmanager`.`groupid` = `mastergroup`.`groupid`
+                LIMIT {$offset},{$perpage}
+                ";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function GetMasterInfo($id)
+    {
+        $sql = "SELECT `master`.*, `groupmanager`.`groupname`, `groupmanager`.`groupinfo` 
+                FROM `master`
+                LEFT JOIN `mastergroup` ON `mastergroup`.`masterid` = `master`.`id`
+                LEFT JOIN `groupmanager` ON `groupmanager`.`groupid` = `mastergroup`.`groupid`
+                WHERE `master`.`id` = $id
+                ";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    /**
     * 获取管理员中的所有用户
     *
     */
@@ -72,6 +102,15 @@ class ACL_Model extends CI_Model {
        $query = $this->db->get("master");
        return $query->result_array(); 
     }
+
+    /**
+    * 获取管理员中的所有用户
+    *
+    */
+    public function CountAllMaster() {
+       return $this->db->count_all_results('master');
+    }
+
 
     /**
     * 获取管理员中的用户
@@ -88,6 +127,16 @@ class ACL_Model extends CI_Model {
     */
     public function AddMaster($data) {
         $this->_InsertIgnore("master", $data);
+        return $this->db->affected_rows();
+    }
+
+    /**
+    * 更新管理员中的用户
+    *
+    */
+    public function UpdateMaster($id,$data) {
+        $this->db->where('id',$id);
+        $query = $this->db->update('master',$data);
         return $this->db->affected_rows();
     }
 
@@ -204,6 +253,26 @@ class ACL_Model extends CI_Model {
         $this->db->delete('mastergroup', array('groupid' => $groupid)); 
         return $this->db->affected_rows();
     }    
+
+    /**
+    *  删除用户组的用户
+    *
+    */
+    public function DelMasterInGroup($masterid) {
+        $this->db->delete('mastergroup', array('masterid' => $masterid)); 
+        return $this->db->affected_rows();
+    }
+
+    /**
+    *  删除一个管理员账户
+    *
+    *
+    *
+    */
+    public function DelMaster($masterid) {
+        $this->db->delete('master', array('id' => $masterid)); 
+        return $this->db->affected_rows();
+    }
 
     /**
     *  添加一个权限和用户组映射

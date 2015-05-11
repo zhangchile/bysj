@@ -44,9 +44,12 @@ class ACL_Model extends CI_Model {
     *
     */
     public function GetGroupPermission($groupid) {
-        $sql = "SELECT action.*,viewmodel,`actiongroup`.`id` FROM action,actiongroup 
+        $sql = "SELECT action.*,viewmodel,`actiongroup`.`id`,`actioncolumnname` FROM action,actiongroup,actioncolumn
                 WHERE `action`.`action` = `actiongroup`.`action`
-                AND `actiongroup`.`groupid` = ?";
+                AND `action`.`actioncolumnid` = `actioncolumn`.`actioncolumnid`
+                AND `actiongroup`.`groupid` = ?
+                AND `viewmodel` = 1
+                ORDER BY `actioncolumnid` ASC";
         $query = $this->db->query($sql, array($groupid));
         return $query->result_array();   
     }
@@ -55,10 +58,12 @@ class ACL_Model extends CI_Model {
     *
     */
     public function GetGroupPermission2($groupid) {
-        $sql = "SELECT action.* FROM action 
+        $sql = "SELECT action.*,`actioncolumnname` FROM action,actioncolumn
                 WHERE `action`.`action` NOT IN (
                     SELECT action FROM actiongroup WHERE groupid = ?)
-                AND viewmodel = 1";
+                AND viewmodel = 1
+                AND `action`.`actioncolumnid` = `actioncolumn`.`actioncolumnid`
+                ORDER BY `actioncolumnid` ASC";
         $query = $this->db->query($sql, array($groupid));
         return $query->result_array();          
     }

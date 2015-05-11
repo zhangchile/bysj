@@ -1,5 +1,17 @@
 <?php $this->load->view("template/header.php");?>
 
+<style type="text/css">
+.column-tab {
+  margin: 15px 0px 0px;
+  border-top: 1px solid rgb(204, 204, 204);
+  display: inline-block;
+  border-left: 1px solid rgb(204, 204, 204);
+  border-right: 1px solid rgb(204, 204, 204);
+  padding: 5px;
+}
+
+</style>
+
 <!-- 添加管理员层Modal -->
   <form action="<?php echo site_url('superadmin/admin/add');?>" method="post" class="form-horizontal" role="form">
   <input id="add_groupid" type="hidden" name="groupid" value="">    
@@ -97,9 +109,11 @@
         <?php echo $sidebar;?>
         <!--end 左侧栏-->
         <div class="col-xs-12 col-sm-9">
-
         <?php foreach($group as $g) :?>
-<?php //var_dump($g)?>
+<?php //var_dump($g)
+//计数器
+$count = 0;
+?>
 
         <div class="panel panel-default">
           <div class="panel-heading" style="cursor:pointer;">
@@ -108,7 +122,11 @@
           <div class="panel-body">
             <ul class="list-group">
               <?php foreach ($g['permission'] as $key => $value) {?>
-                <li class="list-group-item"><?php echo $value['actionname']?>
+                  <?php if($value['actioncolumnid'] != $count ) {
+                      echo '<p class="column-tab">'.$value['actioncolumnname'].'</p>';
+                      $count = $value['actioncolumnid'];
+                  }?>
+                <li class="list-group-item" ><?php echo $value['actionname']?>
                   <?php if(in_array("delpermission", $this->action)):?>
                   <a id="delete" data="<?php echo site_url("superadmin/permission/del").'/'.$value['id'];?>" style="float:right;cursor:pointer" data-toggle="modal" data-target="#deleteModal">删除</a>
                 <?php endif;?>
@@ -122,15 +140,15 @@
              <select name="action" class="form-control">
                <?php foreach($g["unget_permission"] as $key => $value):?>
                  <?php if($key == 0):?>
-                  <option  value="<?php echo $value['action'];?>" selected><?php echo $value['actionname'];?></option>
+                  <option  value="<?php echo $value['action'];?>" selected><?php echo $value['actioncolumnname'].'-'.$value['actionname'];?></option>
                   <?php else:?>
-                  <option value="<?php echo $value['action'];?>"><?php echo $value['actionname'];?></option>
+                  <option value="<?php echo $value['action'];?>"><?php echo $value['actioncolumnname'].'-'.$value['actionname'];?></option>
                   <?php endif;?>
                 <?php endforeach;?>
               </select>
             </div>
           <div class="col-sm-4">
-           <input type='submit' style="float:left;" class="btn btn-primary"  value="添加">
+           <input type='submit' style="float:left;" class="btn btn-primary"  value="添加权限">
          
        </div>
         </form>
@@ -143,7 +161,7 @@
       </div><!--/row-->
 <script type="text/javascript">
 $(document).ready(function(){
-  // $(".panel-body").hide();
+  $(".panel-body").hide();
   $(".panel-heading").click(function(){
     $(this).next().toggle(200);
   });

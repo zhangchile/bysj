@@ -201,7 +201,7 @@
       </div><!--/row-->
 <script type="text/javascript">
 $(document).ready(function(){
-  // $(".panel-body").hide();
+  $(".panel-body").hide();
   $(".panel-heading").click(function(){
     $(this).next().toggle(200);
   });

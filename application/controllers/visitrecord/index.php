@@ -5,49 +5,51 @@ class Index extends CI_Controller {
     public $action; 
     public $_masterid;
     public $leftmenukey;
+
     public function __construct()
     {
         parent::__construct();
         $this->action = explode(",", $this->session->userdata("action"));
         $this->_masterid = $this->session->userdata("masterid");
-        $this->load->model('repareorder_model');
+        $this->load->model('visitrecord_model');
         $this->load->library("dormitory");
         $this->config->load('pager_config',TRUE);
-        $this->leftmenukey = '/reparedepartment/';
+        $this->leftmenukey = '/visitrecord/';
     }
 
     public function index($page = 1)
     {
         $condition = $this->input->get();
 
-        $type = '';
-        $status = '';
+        $time_start = '';
+        $time_end = '';
         if($condition) {
-            $type = $condition['type'] == 'all' ? '': $condition['type'];
-            $status = $condition['status'] == 'all' ? '': $condition['status'];
+            $time_start = $condition['time_start'] == '' ? '': strtotime($condition['time_start']);
+            $time_end   = $condition['time_end'] == '' ? '': strtotime($condition['time_end']);
         }
         $perpage = 5;
         $offset = ($page - 1) * $perpage;
-        $data = $this->repareorder_model->getorders($type, $offset, $perpage, $status);
+        $data = $this->visitrecord_model->getall($offset, $perpage, $time_start, $time_end);
         $sidebar_data = $this->acl_model->GetSiderBar($this->session->userdata("masterid"));
 
 // var_dump($data);
         //分页
-        $total = $this->repareorder_model->getCountType($type, $status);
+        $total = $this->visitrecord_model->getCount($time_start, $time_end);
 
         $totalpage = ceil($total / $perpage);
 
         $this->load->library('pagination'); 
         $pager_config = $this->config->item('pager_config');
-        $pager_config['base_url'] = site_url("reparedepartment/index/index");
+        $pager_config['base_url'] = site_url("visitrecord/index/index");
         $pager_config['total_rows'] = $total;//获取总数
         $pager_config['per_page'] = $perpage; //设置每页显示的条数
         $pager_config['uri_segment'] = 4;
         $this->pagination->initialize($pager_config);
 
         //END
-        $this->load->view("reparedepartment/index", array('data' => $data, 'sidebar' => $sidebar_data));
+        $this->load->view("visitrecord/index", array('data' => $data, 'sidebar' => $sidebar_data));
     }
+
 
     public function update()
     {
@@ -58,7 +60,7 @@ class Index extends CI_Controller {
                 'id' => $data['id'],
                 'status' => $data['status']
             );
-        $flag = $this->visitrecord_model->updateOrder($arr['id'], $arr);
+        $flag = $this->repareorder_model->updateOrder($arr['id'], $arr);
         redirect('reparedepartment/index/');
     }
 }

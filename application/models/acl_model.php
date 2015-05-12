@@ -34,7 +34,8 @@ class ACL_Model extends CI_Model {
                 WHERE `ag`.`groupid` IN (SELECT `groupid` FROM `mastergroup` WHERE `masterid` = ?)
                 AND `action`.`action` = `ag`.`action`
                 AND `action`.`viewmodel` = 1
-                AND `action`.`actioncolumnid` = `ac`.`actioncolumnid`";
+                AND `action`.`actioncolumnid` = `ac`.`actioncolumnid`
+                ORDER BY `ac`.`actioncolumnid`";
         $query = $this->db->query($sql, array($masterid));
         return $query->result_array();
     }

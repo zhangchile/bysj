@@ -18,8 +18,8 @@
     <a href="<?php echo site_url("student/recharge");?>" class="list-group-item <?php if($this->uri->segment(2)=='recharge') echo " active ";?>">
       宿舍水电充值
     </a>   
-    <a href="#" class="list-group-item ">
+<!--     <a href="#" class="list-group-item ">
         更多功能正在开发中
-      </a>
+      </a> -->
   </div>
 </div><!--/span-->

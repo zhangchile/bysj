@@ -9,6 +9,18 @@
         <form class="form-horizontal" method="post" action="<?php echo site_url('student/waterorder/pay')?>">
           <input type="hidden" value="<?php echo $data[0]['id']?>" name="id">
           <div class="form-group">
+            <label class="col-sm-2 control-label">直接转账到：</label>
+            <div class="col-sm-10">
+              <p class="form-control-static">1234657890123456</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">或扫码支付：</label>
+            <div class="col-sm-10">
+              <p class="form-control-static"><img src="<?php echo base_url();?>public/img/qrcode.jpg" style="width:200px;"></p>
+            </div>
+          </div>
+          <div class="form-group">
             <label class="col-sm-2 control-label">类别：</label>
             <div class="col-sm-10">
               <p class="form-control-static"><?php echo $data[0]['typename']?></p>

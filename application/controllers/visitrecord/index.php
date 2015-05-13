@@ -63,4 +63,27 @@ class Index extends CI_Controller {
         $flag = $this->repareorder_model->updateOrder($arr['id'], $arr);
         redirect('reparedepartment/index/');
     }
+
+    public function add()
+    {
+        $data = $this->input->post();
+        if(!$data) {
+            $this->leftmenukey = '/visitrecord/';
+            $this->load->view('visitrecord/add');
+        } else {
+            $arr = array(
+                    'id' => null,
+                    'studentid' => $data['studentid'],
+                    'truename'  => $data['truename'],
+                    'sex'       => $data['sex'],
+                    'reason'    => $data['reason'],
+                    'visitto'   => $data['visitto'],
+                    'time'      => $data['time']
+                );
+            $this->visitrecord_model->insert($arr);
+            redirect('visitrecord/index');
+        }
+
+
+    }
 }

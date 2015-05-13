@@ -1,6 +1,5 @@
 <?php $this->load->view("template/header.php");?>
 
-
       <div class="row row-offcanvas row-offcanvas-right">
         <!-- 左侧栏-->
         <?php $this->load->view('template/sidebar');?>
@@ -8,41 +7,43 @@
       <div class="col-md-8">
         <div style="margin:0px 0px 10px 0px;">
 
-        <a href="<?php echo site_url('visitrecord/index/add');?>" class="btn btn-primary">添加记录</a>
         </div>
-        <form method="get" action="<?php echo site_url('visitrecord/index');?>">
-          <label>开始时间：</label>
-          <input type="text" name="time_start" value="<?php if($this->input->get('time_start')) echo $this->input->get('time_start')?>">
-          <label>结束时间：</label>
-          <input type="text" name="time_end" value="<?php if($this->input->get('time_end')) echo $this->input->get('time_end')?>">
-        <button type="submit" class="btn btn-default btn-sm">筛选</button>
+        <form method="get" action="<?php echo site_url('studentmanage/index');?>">
+          <label>宿舍编号：</label>
+          <input type="text" name="dormitory" value="<?php if($this->input->get('dormitory')) echo $this->input->get('dormitory')?>">
+          <label>学号：</label>
+          <input type="text" name="studentid" value="<?php if($this->input->get('studentid')) echo $this->input->get('studentid')?>">
+        <button type="submit" class="btn btn-default btn-sm">搜索</button>
       </form>
 
         <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading" style="text-align: center;">来访纪录</div>
+        <div class="panel-heading" style="text-align: center;">学生信息查询</div>
 
     <table class="table table-striped">
           <thead>
             <tr>
-              <th>时间</th>
+              <th>宿舍</th>
               <th>学号</th>
               <th>姓名</th>
               <th>性别</th>
-              <th>来访原因</th>
-              <th>访问地址</th>
+              <th>年级</th>
+              <th>学院</th>
+              <th>专业</th>
+              <th>班级</th>
               </tr>
           </thead>
           <tbody>
             <?php foreach ($data as $key => $value) :?>
               <tr>
-                <td><?php echo date('Y-m-d H:i:s',$value['time']);?></td>
+                <td><?php echo $this->dormitory->TransformID($value['dormitory'])?></td>
                 <td><?php echo $value['studentid'];?></td>
                 <td><?php echo $value['truename'];?></td>
                 <td><?php echo $value['sex'];?></td>
-                <td><?php echo $value['reason'];?></td>
-                <td><?php echo $value['visitto']?> 
-                </td>
+                <td><?php echo $value['grade'];?></td>
+                <td><?php echo $value['department']?></td>
+                <td><?php echo $value['major']?></td>
+                <td><?php echo $value['class']?></td>
               </tr>
             <?php endforeach;?>
           </tbody>

@@ -8,8 +8,8 @@
               <?php echo $value['actioncolumnname'];?>
             </a>
             <?php endforeach;?>
-            <a href="#" class="list-group-item ">
+<!--             <a href="#" class="list-group-item ">
                 更多功能正在开发中
-              </a>
+              </a> -->
           </div>
         </div><!--/span-->

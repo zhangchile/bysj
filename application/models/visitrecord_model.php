@@ -21,17 +21,17 @@ class Visitrecord_Model extends CI_Model {
 	}
 
 	/**
-	*	@todo 添加一条送水单
+	*	@todo 添加一条记录
 	*
 	*/
-	public function insertOrder($data)
+	public function insert($data)
 	{
         $this->db->insert($this->_table, $data);
         return $this->db->insert_id();
 	}
 
 	/**
-	*	@todo 更新一条送水单
+	*	@todo 更新一条记录
 	*
 	*/
 	public function update($id, $data)

@@ -40,7 +40,7 @@
         <!-- 左侧栏-->
         <?php $this->load->view('template/student_sidebar');?>
         <!--end 左侧栏-->
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-9">
         <div class="row">
           <div class="col-md-10">
         <form method="get" action="<?php echo site_url('student/recharge/index');?>">
@@ -98,6 +98,9 @@
                   <a class="btn btn-sm btn-primary" href="<?php echo site_url('student/recharge/pay/').'/'.$value['id']?>">付款</a>
                   <?php elseif(intval($value['status']) == 2):?> 
                   <?php echo $value['billid'];?>
+                  <a class="btn btn-sm btn-primary" href="<?php echo site_url('student/recharge/pay/').'/'.$value['id']?>">修改</a>
+                <?php else:?>
+                  <?php echo $value['billid']?>
                 <?php endif;?>
                 </td>
                 </tr>

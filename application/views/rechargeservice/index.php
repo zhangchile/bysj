@@ -36,7 +36,7 @@
         <!-- 左侧栏-->
         <?php $this->load->view('template/sidebar');?>
         <!--end 左侧栏-->
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-9">
       <div>
       <p>
         <?php if(in_array("editrechargeprize", $this->action)):?>
@@ -70,7 +70,7 @@
         <button type="submit" class="btn btn-default btn-sm">筛选</button>
       </form>
     </div>
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-9">
         <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading" style="text-align: center;">申请记录</div>

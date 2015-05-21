@@ -18,7 +18,7 @@
     <div class="navbar navbar-fixed-top navbar-default" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="<?php echo site_url('index');?>">学生宿舍管理系统</a>
+          <a class="navbar-brand" href="<?php echo site_url('index');?>">学生宿舍管理与服务系统</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -34,9 +34,9 @@
 
      <div class="row">
         <div class="col-md-12">
-          <h2 >毕业设计：宿舍管理与服务系统</h2>
+          <h2 >毕业设计：学生宿舍管理与服务系统</h2>
           <h3>开发者：11级网络2班 3111006360 张智励</h3>
-          <h3>开发环境：PHP+MySQL</h3>
+          <h3>开发语言：PHP+MySQL</h3>
           <h3>PHP版本：<?php echo PHP_VERSION; ?></h3>
           <h3>MySQL版本：<?php echo mysql_get_server_info(); ?></h3>
           <h3>开源框架：<a href="http://codeigniter.org.cn/" target="_blank">CodeIgniter ®</a>  

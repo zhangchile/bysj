@@ -58,7 +58,7 @@ class Index extends CI_Controller {
                 'id' => $data['id'],
                 'status' => $data['status']
             );
-        $flag = $this->visitrecord_model->updateOrder($arr['id'], $arr);
+        $flag = $this->repareorder_model->updateOrder($arr['id'], $arr);
         redirect('reparedepartment/index/');
     }
 }

@@ -85,7 +85,8 @@ class WaterOrder extends CI_Controller {
         $post = $this->input->post();
         if($post) {
             $data = array(
-                    'billid' => $post['billid']
+                    'billid' => $post['billid'],
+                    'status' => 2
                     );
             $flag = $this->waterorder_model->update($post['id'], $data);
             redirect('student/waterorder/');

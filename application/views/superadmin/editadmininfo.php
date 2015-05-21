@@ -4,10 +4,10 @@
         <!-- 左侧栏-->
         <?php echo $sidebar;?>
         <!--end 左侧栏-->
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-9">
         <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading">管理员信息
+        <div class="panel-heading">修改管理员信息
           <!-- <a href="#" style="float:right;">查看所有>></a> -->
         </div>
         <form class="form-horizontal" method="post" action="<?php echo site_url('superadmin/manage/update')?>">

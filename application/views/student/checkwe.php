@@ -4,7 +4,7 @@
         <!-- 左侧栏-->
         <?php $this->load->view('template/student_sidebar');?>
         <!--end 左侧栏-->
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-9">
         <div id="wpannel" class="panel panel-default">
         <!-- Default panel contents -->
         <div  class="panel-heading">用水统计

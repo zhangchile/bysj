@@ -161,7 +161,7 @@
         <!-- 左侧栏-->
         <?php echo $sidebar;?>
         <!--end 左侧栏-->
-        <div class="col-xs-12 col-sm-9">
+        <div class="col-md-8 col-sm-9">
         <div>
             <p>
               <?php if(in_array("addgroupmanager", $this->action)):?>

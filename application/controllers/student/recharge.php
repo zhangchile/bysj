@@ -63,7 +63,7 @@ class Recharge extends CI_Controller {
                 'date'    => time(),
             );
         $id = $this->recharge_model->insertOrder($data);
-        redirect('student/recharge/index'.$id);
+        redirect('student/recharge/pay/'.$id);
     }
 
     public function pay($id='')

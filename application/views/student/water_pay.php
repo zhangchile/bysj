@@ -41,13 +41,13 @@
           <div class="form-group">
             <label for="billid" class="col-sm-2 control-label">交易号：</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="billid" name="billid" required>
+              <input type="text" class="form-control" id="billid" name="billid" required value="<?php if(isset($data[0]['billid'])) echo $data[0]['billid']?>">
             </div>
           </div>
           <div class="form-group" align="right">
             <div class="col-sm-12">
             <button type="submit" class="btn btn-primary">提交</button>
-            <a type="button" class="btn btn-default" href="<?php echo site_url('student/waterorder')?>">暂不付款</a>
+            <a type="button" class="btn btn-default" href="<?php echo site_url('student/waterorder')?>">取消</a>
             </div>
           </div>
         </form>

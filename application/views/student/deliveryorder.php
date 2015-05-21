@@ -45,7 +45,7 @@
         <!-- 左侧栏-->
         <?php $this->load->view('template/student_sidebar');?>
         <!--end 左侧栏-->
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-9">
         <div class="row">
           <div class="col-md-10">
             <h4>剩余：<?php echo $waterleft[0]['waterleft'];?>桶</h4>

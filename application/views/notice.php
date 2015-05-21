@@ -23,7 +23,7 @@
         <!-- 左侧栏-->
         <?php echo $sidebar;?>
         <!--end 左侧栏-->
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-9">
         <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">通知
@@ -61,7 +61,7 @@
                       <?php if(in_array("editnotice",$this->action)):?>
                       <a style="float: right;" href="<?php echo site_url("notice/edit").'/'.$value['id']?>">修改</a>
                       <?php endif;?>
-                  <span style="float: right;">由 <?php echo $value['author']?> 于 <?php echo date("Y年m月d日",$value['time'])?> 发布 </span>
+                  <span style="float: right;  text-overflow: ellipsis;white-space: nowrap;width: 40%;overflow: hidden;">由 <?php echo $value['author']?> 于 <?php echo date("Y年m月d日",$value['time'])?> 发布 </span>
                   </li>
               <?php endforeach;?>              
           </ul>

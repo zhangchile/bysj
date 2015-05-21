@@ -4,7 +4,7 @@
         <!-- 左侧栏-->
         <?php echo $sidebar;?>
         <!--end 左侧栏-->
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-9">
         <form class="form-horizontal" role="form" action="<?php echo site_url("pushnotice/push")?>" method="post">
           <div class="form-group">
             <label for="title" class="col-sm-2 control-label">标题</label>

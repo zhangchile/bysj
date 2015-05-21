@@ -30,7 +30,7 @@ class Index extends CI_Controller {
         $perpage = 5;
         $offset = ($page - 1) * $perpage;
         $data = $this->visitrecord_model->getall($offset, $perpage, $time_start, $time_end);
-        $sidebar_data = $this->acl_model->GetSiderBar($this->session->userdata("masterid"));
+        $sidebar_data = $this->acl_model->GetSiderBar($this->_masterid);
 
 // var_dump($data);
         //分页
@@ -68,8 +68,9 @@ class Index extends CI_Controller {
     {
         $data = $this->input->post();
         if(!$data) {
+            $sidebar_data = $this->acl_model->GetSiderBar($this->_masterid);
             $this->leftmenukey = '/visitrecord/';
-            $this->load->view('visitrecord/add');
+            $this->load->view('visitrecord/add', array('sidebar'=>$sidebar_data));
         } else {
             $arr = array(
                     'id' => null,

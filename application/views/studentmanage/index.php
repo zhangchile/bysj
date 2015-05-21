@@ -4,7 +4,7 @@
         <!-- 左侧栏-->
         <?php $this->load->view('template/sidebar');?>
         <!--end 左侧栏-->
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-9">
         <div style="margin:0px 0px 10px 0px;">
 
         </div>

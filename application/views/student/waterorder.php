@@ -48,7 +48,7 @@
         <!-- 左侧栏-->
         <?php $this->load->view('template/student_sidebar');?>
         <!--end 左侧栏-->
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-9">
         <div class="row">
           <div class="col-md-10">
             <h4>剩余：<?php echo $waterleft[0]['waterleft'];?>桶</h4>
@@ -93,7 +93,10 @@
                 <td><?php echo date('Y-m-d H:i:s', $value['time'])?></td>
                 <td><?php if($value['status'] == '1') :?>
                     <a data-toggle="modal" href="<?php echo site_url('student/waterorder/pay/').'/'.$value['id']?>"  class="btn btn-primary btn-sm">付款</a>
-                  <?php else:?> 
+                  <?php elseif($value['status'] == '2'):?> 
+                  <?php echo $value['billid']?>
+                  <a data-toggle="modal" href="<?php echo site_url('student/waterorder/pay/').'/'.$value['id']?>"  class="btn btn-primary btn-sm">修改</a>
+                  <?php else:?>
                   <?php echo $value['billid']?>
                   <?php endif;?> 
                 </td>

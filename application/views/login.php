@@ -66,7 +66,7 @@
 
       <div class="row">
 
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-8">
         <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">通知
@@ -86,7 +86,7 @@
       </div>
           <?php echo $this->pagination->create_links();?><!-- 输出分页模块 -->
       </div>
-      <div class="col-md-4">
+      <div class="col-md-4 col-sm-4">
             <?php if($error):?>
             <script type="text/JavaScript">$('#myModal').modal('show');</script>
             <form class="form-signin" role="form" action="<?php echo site_url('login/check');?>" method="post">

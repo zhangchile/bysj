@@ -5,7 +5,7 @@
         <!-- 左侧栏-->
         <?php $this->load->view('template/sidebar');?>
         <!--end 左侧栏-->
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-9">
         <form method="get" action="<?php echo site_url('deliveryservice/index');?>">
           <label >状态：</label>
           <select name="status">

@@ -61,8 +61,8 @@
         </div> -->
           <ul class="list-group">
               <?php foreach ($noticelist as $key => $value) :?>
-                  <li class="list-group-item"><a href="<?php echo site_url("noticedetail/index").'?id='.$value['id'].'&page='.$this->input->get('page');?>"><?php echo $value['title']?></a>
-                  <span style="float: right;"><?php echo date("Y年m月d日",$value['time'])?></span>
+                  <li class="list-group-item"><a href="<?php echo site_url("noticedetail/index").'?id='.$value['id'].'&page='.$this->input->get('page');?>" style="display:inline-block; text-overflow: ellipsis;white-space: nowrap;width: 50%;overflow: hidden;"><?php echo $value['title']?></a>
+                  <span style="float: right; text-overflow: ellipsis;white-space: nowrap;width: 40%;overflow: hidden;"><?php echo date("Y年m月d日",$value['time'])?></span>
                   </li>
               <?php endforeach;?>              
           </ul>

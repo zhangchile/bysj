@@ -78,7 +78,7 @@
 
           <ul class="list-group">
               <?php foreach ($notice as $key => $value) :?>
-                  <li class="list-group-item"><a href="<?php echo site_url("noticedetail/index").'?id='.$value['id'];?>"><?php echo $value['title']?></a>
+                  <li class="list-group-item"><a href="<?php echo site_url("noticedetail/index").'?id='.$value['id'];?>" style="text-overflow: ellipsis;white-space: nowrap;width: 40%;overflow: hidden;"><?php echo $value['title']?></a>
                   <span style="float: right;"><?php echo date("Y年m月d日",$value['time'])?></span>
                   </li>
               <?php endforeach;?>              

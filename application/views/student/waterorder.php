@@ -48,7 +48,7 @@
         <!-- 左侧栏-->
         <?php $this->load->view('template/student_sidebar');?>
         <!--end 左侧栏-->
-      <div class="col-md-8 col-sm-9">
+      <div class="col-md-8 col-sm-9 col-xs-9">
         <div class="row">
           <div class="col-md-10">
             <h4>剩余：<?php echo $waterleft[0]['waterleft'];?>桶</h4>
@@ -85,7 +85,7 @@
                 <td><?php if ($value['status'] == '1') :?> 
                     请付款
                     <?php elseif($value['status'] == '2') :?>
-                    <span class="label label-info">已付款，请等待确认</span>
+                    <span >已付款</span>
                     <?php elseif($value['status'] == '3') :?>
                     已确认
                     <?php endif;?>

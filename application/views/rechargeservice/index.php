@@ -36,7 +36,7 @@
         <!-- 左侧栏-->
         <?php $this->load->view('template/sidebar');?>
         <!--end 左侧栏-->
-      <div class="col-md-8 col-sm-9">
+      <div class="col-md-8 col-sm-9 col-xs-9">
       <div>
       <p>
         <?php if(in_array("editrechargeprize", $this->action)):?>
@@ -63,14 +63,14 @@
             <option <?php if($this->input->get('status') == '1') echo 'selected'?> value="1">已提交</option>
             <option <?php if($this->input->get('status') == '2') echo 'selected'?> value="2">已付款</option>
             <option <?php if($this->input->get('status') == '3') echo 'selected'?> value="3">已完成</option>
-            <option <?php if($this->input->get('status') == '-1') echo 'selected'?> value="-1">已拒绝</option>
+<!--             <option <?php if($this->input->get('status') == '-1') echo 'selected'?> value="-1">已拒绝</option> -->
           </select>
           <label >宿舍编号：</label>
           <input type="text" name="sid" value="<?php if($this->input->get('sid')) echo $this->input->get('sid')?>"/>   
         <button type="submit" class="btn btn-default btn-sm">筛选</button>
       </form>
     </div>
-      <div class="col-md-8 col-sm-9">
+      <div class="col-md-8 col-sm-9 col-xs-9">
         <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading" style="text-align: center;">申请记录</div>
@@ -110,9 +110,9 @@
                   <?php if(in_array('editrecharge', $this->action)):?>
                   <?php if($value['status'] == '2'):?>
                   <a class="btn btn-primary btn-sm" href="<?php echo site_url('rechargeservice/index/update/?status=3&id=').$value['id']."&type=".$value['type']."&changes=".$value['changes']."&sid=".$value['sid'];?>">确认</a>
-                  <a class="btn btn-default btn-sm" href="<?php echo site_url('rechargeservice/index/update/?status=-1&id=').$value['id']."&type=".$value['type']."&changes=".$value['changes']."&sid=".$value['sid'];?>">拒绝</a>
+                  <!-- <a class="btn btn-default btn-sm" href="<?php echo site_url('rechargeservice/index/update/?status=-1&id=').$value['id']."&type=".$value['type']."&changes=".$value['changes']."&sid=".$value['sid'];?>">拒绝</a> -->
                 <?php elseif($value['status'] == '-1'):?>
-                  <a class="btn btn-primary btn-sm" href="<?php echo site_url('rechargeservice/index/update/?status=2&id=').$value['id']."&type=".$value['type']."&changes=".$value['changes']."&sid=".$value['sid'];?>">恢复</a>
+                  <!-- <a class="btn btn-primary btn-sm" href="<?php echo site_url('rechargeservice/index/update/?status=2&id=').$value['id']."&type=".$value['type']."&changes=".$value['changes']."&sid=".$value['sid'];?>">恢复</a> -->
               <?php endif;?>
             <?php else :?>
             无权限

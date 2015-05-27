@@ -4,7 +4,7 @@
         <!-- 左侧栏-->
         <?php $this->load->view('template/student_sidebar');?>
         <!--end 左侧栏-->
-      <div class="col-md-8">
+      <div class="col-md-8 col-sm-9 col-xs-9">
         <h4 align="center">支付订单</h4>
         <form class="form-horizontal" method="post" action="<?php echo site_url('student/waterorder/pay')?>">
           <input type="hidden" value="<?php echo $data[0]['id']?>" name="id">

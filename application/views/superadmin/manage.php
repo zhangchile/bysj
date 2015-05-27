@@ -23,7 +23,7 @@
         <!-- 左侧栏-->
         <?php echo $sidebar;?>
         <!--end 左侧栏-->
-      <div class="col-md-8 col-sm-9">
+      <div class="col-md-8 col-sm-9 col-xs-9">
         <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">管理员列表

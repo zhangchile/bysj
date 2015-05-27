@@ -4,7 +4,7 @@
         <!-- 左侧栏-->
         <?php $this->load->view('template/sidebar');?>
         <!--end 左侧栏-->
-      <div class="col-md-8 col-sm-9">
+      <div class="col-md-8 col-sm-9 col-xs-9">
         <h4 align="center">添加记录</h4>
         <form class="form-horizontal" method="post" action="<?php echo site_url('visitrecord/index/add')?>">
           <div class="form-group">

@@ -23,7 +23,7 @@
         <!-- 左侧栏-->
         <?php echo $sidebar;?>
         <!--end 左侧栏-->
-      <div class="col-md-8 col-sm-9">
+      <div class="col-md-8 col-sm-9 col-xs-9">
         <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">通知
@@ -54,7 +54,7 @@
 
           <ul class="list-group">
               <?php foreach ($notice as $key => $value) :?>
-                  <li class="list-group-item"><a href="<?php echo site_url("noticedetail/index").'?id='.$value['id'];?>"><?php echo $value['title']?></a>
+                  <li class="list-group-item"><a style="display:inline-block;text-overflow: ellipsis;white-space: nowrap;width: 40%;overflow: hidden;" href="<?php echo site_url("noticedetail/index").'?id='.$value['id'];?>"><?php echo $value['title']?></a>
                       <?php if(in_array("delnotice",$this->action)):?>
                       <a style="float: right;cursor:pointer;" type="button" data-toggle="modal" data-target="#deleteModal" data="<?php echo site_url("notice/del").'/'.$value['id']?>">删除</a>
                       <?php endif;?>

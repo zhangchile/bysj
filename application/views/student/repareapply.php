@@ -49,7 +49,7 @@
         <!-- 左侧栏-->
         <?php $this->load->view('template/student_sidebar');?>
         <!--end 左侧栏-->
-      <div class="col-md-8 col-sm-9">
+      <div class="col-md-8 col-sm-9 col-xs-9">
         <div>
             <p>
               <a data-toggle="modal" data-target="#applyModal"  class="btn btn-primary">申请维修</a>

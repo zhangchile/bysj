@@ -38,7 +38,7 @@
         <!-- 左侧栏-->
         <?php $this->load->view('template/sidebar');?>
         <!--end 左侧栏-->
-      <div class="col-md-8 col-sm-9">
+      <div class="col-md-8 col-sm-9 col-xs-9">
         <div class="row">
           <div class="col-md-12">
         <form style="float:left;" method="get" action="<?php echo site_url('waterservice/index');?>">
@@ -48,7 +48,7 @@
             <option <?php if($this->input->get('status') == '2') echo 'selected'?> value="2">已付款</option>
             <option <?php if($this->input->get('status') == '3') echo 'selected'?> value="3">已确认</option>
             <option <?php if($this->input->get('status') == '1') echo 'selected'?> value="1">未付款</option>
-            <option <?php if($this->input->get('status') == '-1') echo 'selected'?> value="-1">已拒绝</option>
+            <!-- <option <?php if($this->input->get('status') == '-1') echo 'selected'?> value="-1">已拒绝</option> -->
           </select>
         <button type="submit" class="btn btn-default btn-sm">筛选</button>
       </form>

@@ -108,7 +108,7 @@
         <!-- 左侧栏-->
         <?php echo $sidebar;?>
         <!--end 左侧栏-->
-        <div class="col-xs-12 col-md-8 col-sm-9">
+        <div class="col-xs-12 col-md-8 col-sm-9 col-xs-9">
         <?php foreach($group as $g) :?>
 <?php //var_dump($g)
 //计数器
